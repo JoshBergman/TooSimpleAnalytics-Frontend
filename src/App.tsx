@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Link } from "react-router-dom";
 import LandingPage from "./pages/landing-page";
 import WorkspacePage from "./pages/workspace-page";
 import ErrorPage from "./pages/error-page";
