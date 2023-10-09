@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import LandingPage from "./pages/landing-page";
-import WorkspacePage from "./pages/workspace-page";
+import ProjectsPage from "./pages/projects-page";
 import ErrorPage from "./pages/error-page";
+import Header from "./components/UI/Header/header";
 
 const router = createBrowserRouter([
   {
@@ -11,18 +14,28 @@ const router = createBrowserRouter([
   },
   {
     path: "/projects",
-    element: <WorkspacePage />,
+    element: <ProjectsPage />,
     errorElement: <ErrorPage />,
   },
 ]);
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const storedColorScheme = localStorage.getItem("theme");
+    if (storedColorScheme === "light") {
+      setIsDarkMode(false);
+    }
+  }, []);
+
   return (
-    <>
+    <div className={isDarkMode ? "dark" : "light"}>
       <RouterProvider router={router} />
+      <Header setIsDarkMode={setIsDarkMode} />
       <h1>Too Simple Analytics</h1>
       <h2>Working on backend before I start building out the frontend</h2>
-    </>
+    </div>
   );
 }
 

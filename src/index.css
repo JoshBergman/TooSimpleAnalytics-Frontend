@@ -9,27 +9,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
 
+.light {
   /* light mode colors */
   --a-color: green;
   --html-page-color: #ffffff;
   --text-default: hsla(0, 0%, 0%, 0.87);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   /* Dark mode colors */
-  :root {
-    --a-color: blue;
-    --html-page-color: #242424;
-    --text-default: hsla(0, 0%, 100%, 0.87);
-  }
-}
-
-div {
-  background-color: var(--a-color);
-  color: var(--text-default);
-}
-
-html {
-  background-color: var(--html-page-color);
+  --a-color: blue;
+  --html-page-color: #242424;
+  --text-default: hsla(0, 0%, 100%, 0.87);
 }
