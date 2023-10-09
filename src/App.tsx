@@ -31,8 +31,8 @@ function App() {
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
-      <RouterProvider router={router} />
       <Header setIsDarkMode={setIsDarkMode} />
+      <RouterProvider router={router} />
       <h1>Too Simple Analytics</h1>
       <h2>Working on backend before I start building out the frontend</h2>
     </div>

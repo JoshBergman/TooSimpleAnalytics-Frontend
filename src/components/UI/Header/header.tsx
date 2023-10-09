@@ -3,16 +3,19 @@ interface IHeaderProps {
 }
 
 const Header = ({ setIsDarkMode }: IHeaderProps) => {
+  const toggleDark = () => {
+    setIsDarkMode((existing_is_dark) => {
+      const new_is_dark = !existing_is_dark;
+
+      localStorage.setItem("theme", new_is_dark ? "dark" : "light");
+      return new_is_dark;
+    });
+  };
+
   return (
     <div>
       Header
-      <button
-        onClick={() => {
-          setIsDarkMode((prevState) => !prevState);
-        }}
-      >
-        Toggle Dark
-      </button>
+      <button onClick={toggleDark}>Toggle Dark</button>
     </div>
   );
 };

@@ -11,16 +11,16 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.light {
-  /* light mode colors */
-  --a-color: green;
-  --html-page-color: #ffffff;
-  --text-default: hsla(0, 0%, 0%, 0.87);
-}
-
 .dark {
   /* Dark mode colors */
   --a-color: blue;
   --html-page-color: #242424;
   --text-default: hsla(0, 0%, 100%, 0.87);
+}
+
+.light {
+  /* light mode colors */
+  --a-color: green;
+  --html-page-color: #ffffff;
+  --text-default: hsla(0, 0%, 0%, 0.87);
 }
