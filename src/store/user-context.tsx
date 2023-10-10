@@ -2,12 +2,9 @@ import React from "react";
 import { IUser } from "../interfaces/user";
 
 export const userDefault: IUser = {
-  item: "placeholder",
+  projects: {},
   actions: {
     authenticate: () => {},
-    deauthenticate: () => {},
-    setAuthToken: () => {},
-    setLocalStoragePreference: () => {},
   },
 };
 

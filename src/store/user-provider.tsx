@@ -1,4 +1,4 @@
-import { UserContext, userDefault } from "./UserContext";
+import { UserContext, userDefault } from "./user-context";
 import { IUser } from "../interfaces/user";
 
 interface IProviderProps {
@@ -9,7 +9,17 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const authenticate = () => {};
 
   const finalUserData: IUser = {
-    item: "placeholder",
+    ...userDefault,
+    projects: {
+      "Gay Sex Calculator": {
+        totalViews: 69,
+        dated_views: {},
+      },
+      "Ben Toolin": {
+        totalViews: 420,
+        dated_views: {},
+      },
+    },
     actions: {
       authenticate,
     },

@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/landing-page";
 import ProjectsPage from "./pages/projects-page";
 import ErrorPage from "./pages/error-page";
-import Header from "./components/UI/Header/header";
+import Header from "./components/UI/header/header";
 
 const router = createBrowserRouter([
   {
