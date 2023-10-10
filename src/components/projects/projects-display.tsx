@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "../../store/user-context";
+import { UserContext } from "../../store/user/user-context";
 import { project } from "../../interfaces/user";
 
 const ProjectsDisplay = () => {

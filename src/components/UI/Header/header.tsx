@@ -1,21 +1,23 @@
-interface IHeaderProps {
-  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { useContext } from "react";
+import BetterLink from "../../Utility/Navigation/BetterLink";
 
-const Header = ({ setIsDarkMode }: IHeaderProps) => {
-  const toggleDark = () => {
-    setIsDarkMode((existing_is_dark) => {
-      const new_is_dark = !existing_is_dark;
+import styles from "./styles/header.module.css";
+import { AppStateContext } from "../../../store/app-state/app-state-context";
 
-      localStorage.setItem("theme", new_is_dark ? "dark" : "light");
-      return new_is_dark;
-    });
-  };
+const Header = () => {
+  const { isDarkMode, toggleDarkMode } = useContext(AppStateContext).appState;
 
   return (
-    <div>
-      Header
-      <button onClick={toggleDark}>Toggle Dark</button>
+    <div className={styles.header}>
+      <h2>
+        <BetterLink to="/">TSA</BetterLink>
+      </h2>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+      </button>
+      <nav>
+        <a href="/projects">Projects</a>
+      </nav>
     </div>
   );
 };

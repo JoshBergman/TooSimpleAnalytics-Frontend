@@ -1,5 +1,5 @@
 import React from "react";
-import { IUser } from "../interfaces/user";
+import { IUser } from "../../interfaces/user";
 
 export const userDefault: IUser = {
   projects: {},

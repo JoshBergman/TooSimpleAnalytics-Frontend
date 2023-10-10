@@ -1,5 +1,5 @@
 import { UserContext, userDefault } from "./user-context";
-import { IUser } from "../interfaces/user";
+import { IUser } from "../../interfaces/user";
 
 interface IProviderProps {
   children: React.ReactNode;
