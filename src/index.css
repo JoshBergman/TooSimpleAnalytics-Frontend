@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -11,16 +10,32 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
 .dark {
   /* Dark mode colors */
-  --a-color: blue;
+  --a-color: rgb(25, 25, 114);
   --html-page-color: #242424;
   --text-default: hsla(0, 0%, 100%, 0.87);
 }
 
 .light {
   /* light mode colors */
-  --a-color: green;
+  --a-color: rgb(36, 96, 208);
   --html-page-color: #ffffff;
   --text-default: hsla(0, 0%, 0%, 0.87);
+}
+
+.dark, .light {
+  /* Styles for main div (App div / root container) */
+  background-color: var(--html-page-color);
+  color: var(--text-default);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+  min-height: 100vh;
+}
+
+html {
+  background-color: var(--html-page-color);
 }
