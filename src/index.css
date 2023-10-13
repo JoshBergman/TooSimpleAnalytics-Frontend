@@ -11,6 +11,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body {
+  /* Who in their right mind made this not default */
+  margin: 0;
+}
 
 .dark {
   /* Dark mode colors */
@@ -26,17 +30,11 @@
   --text-default: hsla(0, 0%, 0%, 0.87);
 }
 
-.dark, .light {
+.dark,
+.light {
   /* Styles for main div (App div / root container) */
   background-color: var(--html-page-color);
   color: var(--text-default);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  
-  min-height: 100vh;
-}
 
-html {
-  background-color: var(--html-page-color);
+  min-height: 100vh;
 }
