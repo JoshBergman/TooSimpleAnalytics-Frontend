@@ -11,11 +11,23 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const finalUserData: IUser = {
     ...userDefault,
     projects: {
-      "Gay Sex Calculator": {
+      "Gay Calculator": {
         totalViews: 69,
         dated_views: {},
       },
       "Ben Toolin": {
+        totalViews: 420,
+        dated_views: {},
+      },
+      Ballun: {
+        totalViews: 420,
+        dated_views: {},
+      },
+      Nashville: {
+        totalViews: 420,
+        dated_views: {},
+      },
+      Corkland: {
         totalViews: 420,
         dated_views: {},
       },

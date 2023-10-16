@@ -9,15 +9,19 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <h2>
-        <Link to="/">TSA</Link>
-      </h2>
-      <button onClick={toggleDarkMode}>
-        {isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      </button>
-      <nav>
-        <Link to="/projects">Projects</Link>
-      </nav>
+      <div className={styles.leftSideHeader}>
+        <h2>
+          <Link to="/">TSA</Link>
+        </h2>
+      </div>
+      <div className={styles.rightSideHeader}>
+        <button onClick={toggleDarkMode}>
+          {isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        </button>
+        <nav>
+          <Link to="/projects">Projects</Link>
+        </nav>
+      </div>
     </div>
   );
 };

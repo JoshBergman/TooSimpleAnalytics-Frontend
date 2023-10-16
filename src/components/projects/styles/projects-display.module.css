@@ -1,0 +1,13 @@
+.projectsContainer {
+  background-color: gray;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.project {
+  background-color: darkcyan;
+  width: 150px;
+  height: 150px;
+}

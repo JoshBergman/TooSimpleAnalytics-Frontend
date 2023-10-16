@@ -1,5 +1,23 @@
 .header {
-    display: flex;
-    background-color: "pink";
-    color: "green";
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: pink;
+}
+
+.leftSideHeader,
+.rightSideHeader {
+}
+
+.leftSideHeader {
+  background-color: cyan;
+  padding: 0px 10px;
+  width: fit-content;
+}
+
+.rightSideHeader {
+  width: 100%;
+  background-color: darkcyan;
+  display: flex;
+  flex-direction: row-reverse;
 }
