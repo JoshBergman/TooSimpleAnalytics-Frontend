@@ -1,8 +1,9 @@
 .header {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  background-color: pink;
+  width: clamp(260px, 60%, 1200px);
+  margin: 0 auto;
+  background-color: gray;
 }
 
 .leftSideHeader,
@@ -10,14 +11,12 @@
 }
 
 .leftSideHeader {
-  background-color: cyan;
   padding: 0px 10px;
   width: fit-content;
 }
 
 .rightSideHeader {
   width: 100%;
-  background-color: darkcyan;
   display: flex;
   flex-direction: row-reverse;
 }

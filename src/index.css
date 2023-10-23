@@ -18,16 +18,20 @@ body {
 
 .dark {
   /* Dark mode colors */
-  --a-color: rgb(25, 25, 114);
-  --html-page-color: #242424;
+  --html-page-color: rgb(23, 24, 26);
   --text-default: hsla(0, 0%, 100%, 0.87);
+
+  --background-one: #0a0a0a;
+
+  --subtle-gray: rgb(69, 69, 69);
 }
 
 .light {
   /* light mode colors */
-  --a-color: rgb(36, 96, 208);
   --html-page-color: #ffffff;
   --text-default: hsla(0, 0%, 0%, 0.87);
+
+  --background-one: rgb(232, 232, 232);
 }
 
 .dark,
@@ -37,4 +41,7 @@ body {
   color: var(--text-default);
 
   min-height: 100vh;
+
+  /* shared light and dark colors */
+  --shared-color: pink;
 }

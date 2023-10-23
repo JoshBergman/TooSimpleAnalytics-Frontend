@@ -1,0 +1,14 @@
+.logoTextContainer {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 10px;
+}
+
+.logoText {
+  color: var(--text-default);
+  text-decoration: none;
+  font-size: 1em;
+  white-space: nowrap;
+  margin: -5px;
+}
