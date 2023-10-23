@@ -43,5 +43,6 @@ body {
   min-height: 100vh;
 
   /* shared light and dark colors */
+  --brand-1: orange;
   --shared-color: pink;
 }

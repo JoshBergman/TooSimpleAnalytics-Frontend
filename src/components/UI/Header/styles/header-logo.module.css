@@ -1,8 +1,7 @@
 .logoTextContainer {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  margin: 10px;
+  width: 100%;
+  padding-right: 4px;
+  height: fit-content;
 }
 
 .logoText {
@@ -10,5 +9,4 @@
   text-decoration: none;
   font-size: 1em;
   white-space: nowrap;
-  margin: -5px;
 }

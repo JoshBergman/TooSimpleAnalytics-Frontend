@@ -1,13 +1,19 @@
 import { useContext } from "react";
-import { CiLight, CiDark } from "react-icons/ci";
+import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { AppStateContext } from "../../../../store/app-state/app-state-context";
+
+import styles from "../styles/dark-button.module.css";
 
 const DarkButton = () => {
   const { isDarkMode, toggleDarkMode } = useContext(AppStateContext).appState;
 
   return (
-    <button onClick={toggleDarkMode}>
-      {isDarkMode ? <CiDark /> : <CiLight />}
+    <button className={styles.darkButton} onClick={toggleDarkMode}>
+      {isDarkMode ? (
+        <BiSolidSun className={styles.iconSun} />
+      ) : (
+        <BiSolidMoon className={styles.iconMoon} />
+      )}
     </button>
   );
 };

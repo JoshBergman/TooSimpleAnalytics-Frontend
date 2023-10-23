@@ -12,8 +12,10 @@ const Header = () => {
       </div>
       <div className={styles.rightSideHeader}>
         <DarkButton />
-        <nav>
-          <Link to="/projects">Projects</Link>
+        <nav className={styles.nav}>
+          <Link to="/projects" className={styles.navLink}>
+            Projects
+          </Link>
         </nav>
       </div>
     </div>

@@ -1,9 +1,12 @@
 .header {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+
   width: clamp(260px, 60%, 1200px);
-  margin: 0 auto;
-  background-color: gray;
+  margin: 0 auto 30px auto;
+
+  transform: translateY(10px);
 }
 
 .leftSideHeader,
@@ -11,7 +14,6 @@
 }
 
 .leftSideHeader {
-  padding: 0px 10px;
   width: fit-content;
 }
 
@@ -19,4 +21,36 @@
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
+}
+
+.nav {
+  width: 96%;
+  display: flex;
+  justify-content: right;
+  height: 60%;
+  margin: auto 0;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--text-default);
+  position: relative;
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--brand-1);
+  transform-origin: bottom right;
+  transition: transform 0.14s ease-out;
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

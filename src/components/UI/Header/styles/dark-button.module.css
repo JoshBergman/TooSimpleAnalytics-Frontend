@@ -1,0 +1,22 @@
+.darkButton {
+  border: 0px solid transparent;
+  background-color: transparent;
+  margin-left: 10px;
+}
+
+.darkButton:hover {
+  cursor: pointer;
+}
+
+.iconSun,
+.iconMoon {
+  font-size: 1.8em;
+}
+
+.iconSun {
+  color: yellow;
+}
+
+.iconMoon {
+  color: rgb(62, 63, 76);
+}
