@@ -9,10 +9,6 @@
   transform: translateY(10px);
 }
 
-.leftSideHeader,
-.rightSideHeader {
-}
-
 .leftSideHeader {
   width: fit-content;
 }
