@@ -19,6 +19,8 @@ body {
 .dark {
   /* Dark mode colors */
   --html-page-color: rgb(37, 39, 42);
+  --page-secondary: rgb(37, 39, 42);
+
   --text-default: hsla(0, 0%, 100%, 0.87);
 
   --background-one: #0a0a0a;
@@ -29,6 +31,7 @@ body {
 .light {
   /* light mode colors */
   --html-page-color: #ffffff;
+  --page-secondary: rgb(255, 255, 255);
   --text-default: hsla(0, 0%, 0%, 0.87);
 
   --background-one: rgb(232, 232, 232);
@@ -43,6 +46,6 @@ body {
   min-height: 100vh;
 
   /* shared light and dark colors */
-  --brand-1: rgb(33, 82, 219);
+  --brand-1: rgb(77, 158, 208);
   --shared-color: pink;
 }

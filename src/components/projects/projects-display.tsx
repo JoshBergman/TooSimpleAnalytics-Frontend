@@ -24,7 +24,13 @@ const ProjectsDisplay = () => {
     return projElements;
   };
 
-  return <div className={styles.projectsContainer}>{renderProjects()}</div>;
+  return (
+    <div className={styles.projectsContainer}>
+      {Object.keys(projects).length >= 1
+        ? renderProjects()
+        : "Loading... (Or no projects!)"}
+    </div>
+  );
 };
 
 export default ProjectsDisplay;

@@ -1,0 +1,42 @@
+.modalContainer {
+  background-color: rgba(0, 0, 0, 0.369);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.form {
+  width: clamp(260px, 60%, 700px);
+  margin: 20% auto 0 auto;
+  background-color: var(--page-secondary);
+}
+
+.headingContainer {
+}
+
+.heading {
+  display: inline-block;
+  margin: 0;
+}
+
+.cancelButton {
+  float: right;
+
+  color: var(--brand-1);
+  border: 2px solid var(--brand-1);
+  border-radius: 14px;
+  background-color: transparent;
+
+  margin: 5px;
+  font-size: 1.05em;
+  font-weight: bold;
+}
+
+.cancelButton:hover {
+  cursor: pointer;
+  color: var(--text-default);
+  background-color: var(--brand-1);
+  border-color: var(--text-default);
+}

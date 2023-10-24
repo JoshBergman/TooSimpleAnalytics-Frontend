@@ -1,3 +1,7 @@
 .test {
   background-color: var(--a-color);
 }
+
+.newProjectButton {
+  background-color: green;
+}
