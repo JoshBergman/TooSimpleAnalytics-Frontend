@@ -3,6 +3,7 @@ import Logo from "./header-components/logo";
 
 import styles from "./styles/header.module.css";
 import DarkButton from "./header-components/dark-button";
+import Notifications from "../notifications/notifications";
 
 const Header = () => {
   return (
@@ -18,6 +19,7 @@ const Header = () => {
           </Link>
         </nav>
       </div>
+      <Notifications />
     </div>
   );
 };

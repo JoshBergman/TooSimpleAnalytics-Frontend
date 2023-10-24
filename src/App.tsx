@@ -5,6 +5,7 @@ import LandingPage from "./pages/landing-page";
 import ProjectsPage from "./pages/projects-page";
 import ErrorPage from "./pages/error-page";
 import { AppStateContext } from "./store/app-state/app-state-context";
+import DevPage from "./pages/dev-page";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
   {
     path: "/projects",
     element: <ProjectsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/dev",
+    element: <DevPage />,
     errorElement: <ErrorPage />,
   },
 ]);
