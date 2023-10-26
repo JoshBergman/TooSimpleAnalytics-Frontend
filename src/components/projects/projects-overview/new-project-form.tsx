@@ -2,6 +2,7 @@ import { FormEvent, useRef, useState, useContext } from "react";
 import styles from "./styles/new-project-form.module.css";
 import { UserContext } from "../../../store/user/user-context";
 import { AppStateContext } from "../../../store/app-state/app-state-context";
+import { validateProjectName } from "../../../validations/validate-project-name";
 
 interface INewProjectFormProps {
   setMakingNewProject: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,6 +29,8 @@ const NewProjectForm = ({ setMakingNewProject }: INewProjectFormProps) => {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
+
+    //weed out duplicate names and suggest a new name
     if (projectNames.includes(projNameState)) {
       makeNotification(
         "error",
@@ -36,10 +39,18 @@ const NewProjectForm = ({ setMakingNewProject }: INewProjectFormProps) => {
       setProjNameState((prevName) => `copy-of-${prevName}`);
       return;
     }
-    //todo add validation before creating project
-    //todo API call to create project, then get projects again. (Don't manually create a new project in context in case of failure to add in db)
-    userCTX.user.actions.addProject(projNameState);
-    cancelHandler(e);
+
+    //validation of name
+    const nameValidation = validateProjectName(projNameState);
+    nameValidation[0] ? "" : makeNotification("error", nameValidation[1]);
+
+    //add projects to db then refreshes queried projects
+    userCTX.user.actions.addProject(projNameState.trim());
+    makeNotification(
+      "info",
+      "Creating project, may take a up to twenty seconds."
+    );
+    cancelHandler(e); // closes add project window
   };
 
   return (

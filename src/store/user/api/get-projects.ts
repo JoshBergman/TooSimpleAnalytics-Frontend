@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IUser } from "../../../interfaces/user";
+import { staticInfo } from "../../static-info";
 
 export const getProjects = (
   auth: string | null,
@@ -17,10 +18,7 @@ export const getProjects = (
   };
 
   axios
-    .get(
-      "https://tsa-real-765f9ae13226.herokuapp.com/analytic/projects",
-      reqConfig
-    )
+    .get(`${staticInfo.uri}/analytic/projects`, reqConfig)
     .then((response) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { projects, projectsID } = response.data;
