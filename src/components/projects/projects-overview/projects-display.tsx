@@ -3,6 +3,7 @@ import { UserContext } from "../../../store/user/user-context";
 import { project } from "../../../interfaces/user";
 
 import styles from "./styles/projects-display.module.css";
+import ProjectThumbnail from "./project-thumbnail";
 
 const ProjectsDisplay = () => {
   const userCTX = useContext(UserContext).user;
@@ -14,10 +15,13 @@ const ProjectsDisplay = () => {
 
     for (let i = 0; i < projKeys.length; i++) {
       const currProjName = projKeys[i];
+      const currProjInfo = projects[currProjName];
       projElements.push(
-        <div className={styles.project} key={currProjName}>
-          {currProjName}
-        </div>
+        <ProjectThumbnail
+          projectName={currProjName}
+          projectInfo={currProjInfo}
+          key={currProjName}
+        />
       );
     }
 

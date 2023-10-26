@@ -1,6 +1,6 @@
 export interface project {
   totalViews: number;
-  dated_views: {
+  dateYear?: {
     [year: string]: {
       [month: string]: {
         [day: string]: number;
