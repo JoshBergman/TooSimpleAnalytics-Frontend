@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
 
 import Header from "../components/UI/header/header";
-import ProjectsDisplay from "../components/projects/projects-display";
+import ProjectsDisplay from "../components/projects/projects-overview/projects-display";
 import styles from "./styles/projects-page.module.css";
-import NewProjectForm from "../components/projects/new-project-form";
+import NewProjectForm from "../components/projects/projects-overview/new-project-form";
 import { UserContext } from "../store/user/user-context";
 
 const WorkspacePage = () => {

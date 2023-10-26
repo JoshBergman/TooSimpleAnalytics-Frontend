@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { UserContext } from "../../store/user/user-context";
-import { project } from "../../interfaces/user";
+import { UserContext } from "../../../store/user/user-context";
+import { project } from "../../../interfaces/user";
 
 import styles from "./styles/projects-display.module.css";
 
@@ -28,7 +28,7 @@ const ProjectsDisplay = () => {
     <div className={styles.projectsContainer}>
       {Object.keys(projects).length >= 1
         ? renderProjects()
-        : "Loading... (Or no projects!)"}
+        : "Loading (May take up to 20 seconds!) or no projects are found. Please re-log if your projects aren't showing up."}
     </div>
   );
 };

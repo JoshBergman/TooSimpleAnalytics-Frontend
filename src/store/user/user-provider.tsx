@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { UserContext, userDefault } from "./user-context";
 import { IUser } from "../../interfaces/user";
 import { getProjects } from "./api/get-projects";
+import { AppStateContext } from "../app-state/app-state-context";
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -13,9 +14,17 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const [projectsID, setProjectsID] = useState<null | string>(null);
   const auth: string | null = localStorage.getItem("jwt") || null;
 
+  const appCTX = useContext(AppStateContext);
+
   useEffect(() => {
-    getProjects(auth, setProjects, setProjectsID);
-  }, [auth]);
+    getProjects(
+      auth,
+      setProjects,
+      setProjectsID,
+      appCTX.appState.addNotification
+    );
+    // console.log("effect running");
+  }, [auth, appCTX]);
 
   const authenticate = () => {};
 

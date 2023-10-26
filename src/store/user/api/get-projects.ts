@@ -4,7 +4,8 @@ import { IUser } from "../../../interfaces/user";
 export const getProjects = (
   auth: string | null,
   setProjects: (newProjects: IUser["projects"]) => void,
-  setProjectsID: (newID: string) => void
+  setProjectsID: (newID: string) => void,
+  addNotification: (type: string, msg: string) => void
 ) => {
   if (!auth) {
     return;
@@ -27,5 +28,11 @@ export const getProjects = (
       setProjects(projects as IUser["projects"]);
       setProjectsID(projectsID as string);
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error(error);
+      addNotification(
+        "error",
+        "Error loading projects. Please try again in one minute."
+      );
+    });
 };
