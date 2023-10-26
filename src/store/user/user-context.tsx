@@ -8,6 +8,9 @@ export const userDefault: IUser = {
   auth: null,
   actions: {
     authenticate: () => {},
+    addProject: (projectName: string) => {
+      projectName;
+    },
   },
 };
 

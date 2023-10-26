@@ -13,5 +13,7 @@ export interface IUser {
   auth?: string | null;
   projects: { [projectName: string]: project };
   projectsID: null | string;
-  actions: { [index: string]: () => void };
+  actions: {
+    [index: string]: (...args: string[]) => void;
+  };
 }

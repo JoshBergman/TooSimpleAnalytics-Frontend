@@ -36,7 +36,10 @@ const NewProjectForm = ({ setMakingNewProject }: INewProjectFormProps) => {
       setProjNameState((prevName) => `copy-of-${prevName}`);
       return;
     }
+    //todo add validation before creating project
     //todo API call to create project, then get projects again. (Don't manually create a new project in context in case of failure to add in db)
+    userCTX.user.actions.addProject(projNameState);
+    cancelHandler(e);
   };
 
   return (
