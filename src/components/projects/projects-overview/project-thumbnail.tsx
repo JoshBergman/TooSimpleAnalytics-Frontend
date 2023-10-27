@@ -37,7 +37,7 @@ const ProjectThumbnail = ({
   projectInfo,
 }: IProjectThumbnailProps) => {
   //! This useless state makes the graph responsive. I dont know how I fixed this bug or why it works. It only works when used as a button
-  //! as seen in the jsx.
+  //! as seen in the jsx. (Completely hidden but still exists in the dom)
   const [statefull, setStatefull] = useState(false);
 
   const lastWeekDates = getDatesArray();

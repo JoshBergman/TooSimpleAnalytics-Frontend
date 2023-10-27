@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { UserContext } from "../../../store/user/user-context";
-import { project } from "../../../interfaces/user";
+import { IUser, project } from "../../../interfaces/user";
 
 import styles from "./styles/projects-display.module.css";
 import ProjectThumbnail from "./project-thumbnail";
 
-const ProjectsDisplay = () => {
+interface IProjectsDisplayProps {
+  setMakingNewProject: () => void;
+}
+
+const ProjectsDisplay = ({ setMakingNewProject }: IProjectsDisplayProps) => {
   const userCTX = useContext(UserContext).user;
   const projects: { [projectName: string]: project } = userCTX.projects;
 
@@ -15,7 +19,10 @@ const ProjectsDisplay = () => {
 
     for (let i = 0; i < projKeys.length; i++) {
       const currProjName = projKeys[i];
-      const currProjInfo = projects[currProjName];
+      //todo add dated views under "datedViews": [dateyear]
+      // @ts-expect-error Structure of object has dateyear and totalViews on the same nested level will eventually fix
+      const currProjInfo: IUser["projects"]["x"]["dateYear"] =
+        projects[currProjName];
       projElements.push(
         <ProjectThumbnail
           projectName={currProjName}
@@ -29,11 +36,19 @@ const ProjectsDisplay = () => {
   };
 
   return (
-    <div className={styles.projectsContainer}>
-      {Object.keys(projects).length >= 1
-        ? renderProjects()
-        : "Loading (May take up to 20 seconds!) or no projects are found. Please re-log if your projects aren't showing up."}
-    </div>
+    <>
+      <div className={styles.titleContainer}>
+        <h4 className={styles.header}>My Projects: </h4>
+        <button className={styles.newProjButton} onClick={setMakingNewProject}>
+          New Project
+        </button>
+      </div>
+      <div className={styles.projectsContainer}>
+        {Object.keys(projects).length >= 1
+          ? renderProjects()
+          : "Loading (May take up to 20 seconds!) or no projects are found. Please re-log if your projects aren't showing up."}
+      </div>
+    </>
   );
 };
 

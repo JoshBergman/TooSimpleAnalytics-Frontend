@@ -5,13 +5,17 @@ import ProjectsDisplay from "../components/projects/projects-overview/projects-d
 import styles from "./styles/projects-page.module.css";
 import NewProjectForm from "../components/projects/projects-overview/new-project-form";
 import { UserContext } from "../store/user/user-context";
+import { AppStateContext } from "../store/app-state/app-state-context";
 
 const WorkspacePage = () => {
   const [makingNewProject, setMakingNewProject] = useState(false);
   const auth = useContext(UserContext).user.auth;
+  const createNotification =
+    useContext(AppStateContext).appState.addNotification;
 
   const toggleNewProject = () => {
     if (typeof auth !== "string") {
+      createNotification("error", "Login to create a project.");
       return;
     }
     setMakingNewProject((prevNewProjState) => !prevNewProjState);
@@ -19,15 +23,11 @@ const WorkspacePage = () => {
   return (
     <>
       <Header />
-      Projects Page
       <div className={styles.test}>
         {makingNewProject && (
           <NewProjectForm setMakingNewProject={setMakingNewProject} />
         )}
-        <button onClick={toggleNewProject} className={styles.newProjectButton}>
-          New Project
-        </button>
-        <ProjectsDisplay />
+        <ProjectsDisplay setMakingNewProject={toggleNewProject} />
       </div>
     </>
   );

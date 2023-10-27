@@ -1,11 +1,11 @@
 .projectsContainer {
-  width: clamp(260px, 60%, 1200px);
+  width: clamp(800px, 70%, 1500px);
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   grid-auto-rows: auto;
-  column-gap: 30px;
+  column-gap: 40px;
   row-gap: 20px;
 }
 
@@ -13,6 +13,36 @@
   background-color: darkcyan;
   width: 150px;
   height: 150px;
+}
+
+.titleContainer {
+  margin: 0 auto;
+
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header {
+  margin: 0;
+}
+
+.newProjButton {
+  background-color: transparent;
+  border: 2px solid var(--brand-1);
+  border-radius: 20px;
+  padding: 10px;
+  height: 50%;
+}
+
+.newProjButton:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 1700px) {
+  .projectsContainer {
+    grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+  }
 }
 
 @media (max-width: 1000px) {
