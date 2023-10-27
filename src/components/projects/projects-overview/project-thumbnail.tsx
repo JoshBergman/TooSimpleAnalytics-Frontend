@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -35,6 +36,10 @@ const ProjectThumbnail = ({
   projectName,
   projectInfo,
 }: IProjectThumbnailProps) => {
+  //! This useless state makes the graph responsive. I dont know how I fixed this bug or why it works. It only works when used as a button
+  //! as seen in the jsx.
+  const [statefull, setStatefull] = useState(false);
+
   const lastWeekDates = getDatesArray();
   const options = {
     responsive: true,
@@ -42,6 +47,7 @@ const ProjectThumbnail = ({
       legend: {
         position: "top" as const,
       },
+      redraw: true,
       title: {
         display: true,
         text: projectName,
@@ -79,6 +85,14 @@ const ProjectThumbnail = ({
 
   return (
     <div className={styles.thumbnailContainer}>
+      <button
+        className={styles.hide}
+        onClick={() => {
+          setStatefull((prev) => !prev);
+        }}
+      >
+        State Change!: {statefull + ""}
+      </button>
       <Line
         style={{ width: "100% !important" }}
         options={options}

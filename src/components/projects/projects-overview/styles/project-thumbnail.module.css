@@ -6,3 +6,11 @@
 
   overflow: auto !important;
 }
+
+.hide {
+  background-color: transparent;
+  color: transparent;
+  width: 0px;
+  height: 0px;
+  border: 0px solid transparent;
+}
