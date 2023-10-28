@@ -5,10 +5,8 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Filler,
-  Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -17,10 +15,8 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
-  Filler,
-  Legend
+  Filler
 );
 
 import styles from "./styles/project-thumbnail.module.css";
@@ -94,6 +90,7 @@ const ProjectThumbnail = ({
       >
         State Change!: {statefull + ""}
       </button>
+      <h5 className={styles.projectName}>{projectName}</h5>
       <Line
         style={{ width: "100% !important" }}
         options={options}
