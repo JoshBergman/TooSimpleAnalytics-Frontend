@@ -29,7 +29,7 @@ import { getDatesArray } from "./last-week";
 
 interface IProjectThumbnailProps {
   projectName: string;
-  projectInfo: IUser["projects"]["x"]["dateYear"];
+  projectInfo: IUser["projects"]["x"];
 }
 
 const ProjectThumbnail = ({
@@ -40,6 +40,7 @@ const ProjectThumbnail = ({
   //! as seen in the jsx. (Completely hidden but still exists in the dom)
   const [statefull, setStatefull] = useState(false);
 
+  const viewDates = projectInfo.viewDates;
   const lastWeekDates = getDatesArray();
   const options = {
     responsive: true,
@@ -58,12 +59,12 @@ const ProjectThumbnail = ({
   const getInfoFromDate = (date: string): number => {
     const dates = date.split("/");
     if (
-      projectInfo &&
-      projectInfo[dates[0]] &&
-      projectInfo[dates[0]][dates[1]] &&
-      projectInfo[dates[0]][dates[1]][dates[2]]
+      viewDates &&
+      viewDates[dates[0]] &&
+      viewDates[dates[0]][dates[1]] &&
+      viewDates[dates[0]][dates[1]][dates[2]]
     ) {
-      return projectInfo[dates[0]][dates[1]][dates[2]];
+      return viewDates[dates[0]][dates[1]][dates[2]];
     }
     return 0;
   };

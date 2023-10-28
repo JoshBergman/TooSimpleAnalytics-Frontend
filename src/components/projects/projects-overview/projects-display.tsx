@@ -19,10 +19,7 @@ const ProjectsDisplay = ({ setMakingNewProject }: IProjectsDisplayProps) => {
 
     for (let i = 0; i < projKeys.length; i++) {
       const currProjName = projKeys[i];
-      //todo add dated views under "datedViews": [dateyear]
-      // @ts-expect-error Structure of object has dateyear and totalViews on the same nested level will eventually fix
-      const currProjInfo: IUser["projects"]["x"]["dateYear"] =
-        projects[currProjName];
+      const currProjInfo: IUser["projects"]["x"] = projects[currProjName];
       projElements.push(
         <ProjectThumbnail
           projectName={currProjName}
