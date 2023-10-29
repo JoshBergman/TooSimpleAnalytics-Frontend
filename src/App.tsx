@@ -6,6 +6,7 @@ import ProjectsPage from "./pages/projects-page";
 import ErrorPage from "./pages/error-page";
 import { AppStateContext } from "./store/app-state/app-state-context";
 import DevPage from "./pages/dev-page";
+import SingleProject from "./pages/single-project-page";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
   {
     path: "/projects",
     element: <ProjectsPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/projects/:projectName",
+    element: <SingleProject />,
     errorElement: <ErrorPage />,
   },
   {
