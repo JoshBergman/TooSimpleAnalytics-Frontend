@@ -6,7 +6,7 @@ import ProjectsPage from "./pages/projects-page";
 import ErrorPage from "./pages/error-page";
 import { AppStateContext } from "./store/app-state/app-state-context";
 import DevPage from "./pages/dev-page";
-import SingleProject from "./pages/single-project-page";
+import SingleProjectPage from "./pages/single-project-page";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/projects/:projectName",
-    element: <SingleProject />,
+    element: <SingleProjectPage />,
     errorElement: <ErrorPage />,
   },
   {

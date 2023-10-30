@@ -1,0 +1,38 @@
+.topInfoContainer {
+  width: clamp(240px, 80%, 1000px);
+  margin: 70px auto 10px auto;
+
+  display: flex;
+  justify-content: left;
+}
+
+.projSelect {
+  font-size: 1.05em;
+  padding: 6px;
+}
+
+.projSelectLabel {
+  font-size: 1em;
+  display: block;
+}
+
+.daysContainer {
+  margin-left: auto;
+  width: fit-content;
+  border: 1px solid var(--gray-1);
+  display: flex;
+  justify-content: left;
+}
+
+.daysButton {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+}
+
+.daysNum {
+  display: inline;
+  width: 50px;
+  text-align: center;
+  font-size: 1.2em;
+}

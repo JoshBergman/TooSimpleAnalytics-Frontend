@@ -1,0 +1,6 @@
+.graphContainer {
+  width: clamp(240px, 80%, 1000px);
+  margin: 0 auto;
+
+  transform: translateX(10px);
+}
