@@ -1,25 +1,52 @@
 .datesContainer {
   margin-left: auto;
+  transform: translateY(25px);
 }
 
 .daysContainer,
 .yearsContainer {
-  width: fit-content;
-  border: 1px solid var(--gray-1);
+  margin-top: auto;
+  width: 100%;
+  border: 1px solid transparent;
   display: flex;
-  justify-content: left;
-  align-items: baseline;
+  justify-content: space-around;
 }
 
 .daysButton {
   background-color: transparent;
   border: none;
+  transition: all 0.2s ease-out;
+  width: fit-content;
+  height: 100%;
+  color: var(--text-default);
 }
 
-.daysNum {
+.daysButton:hover {
+  cursor: pointer;
+  color: var(--brand-1);
+}
+
+.daysNum,
+.yearsNum {
   display: inline;
   width: 50px;
   text-align: center;
-  font-size: 1.2em;
-  height: 10px;
+  font-size: 1.3em;
+  margin: 0;
+}
+
+.yearsNum {
+  font-size: 1em;
+}
+
+.arrowIcon,
+.arrowIconSmall {
+  height: 100%;
+  width: 100%;
+  font-size: 1.7em;
+  margin-top: 4px;
+}
+
+.arrowIconSmall {
+  font-size: 1.25em;
 }

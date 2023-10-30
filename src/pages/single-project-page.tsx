@@ -35,8 +35,10 @@ const SingleProjectPage = () => {
   ) {
     existingYears = Object.keys({ ...userCTX.projects[projectName].viewDates });
   }
-  const years = [new Date().getFullYear() + ""].concat(existingYears);
-  const daysShowing = [7, 30, 90, 365];
+  const years = [new Date().getFullYear() + ""]
+    .concat(existingYears)
+    .concat(["2022"]);
+  const daysShowing = [7, 30, 90, 365]; //options to view length of graph
 
   return (
     <>
@@ -73,6 +75,8 @@ const SingleProjectPage = () => {
         <SingleProject
           projectName={projectName}
           projectInfo={userCTX.projects[projectName]}
+          days={daysShowing[daysShowingPointer]}
+          year={years[yearsPointer]}
         />
       ) : (
         <h2>
