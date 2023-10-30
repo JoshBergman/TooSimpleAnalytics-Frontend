@@ -22,6 +22,7 @@ ChartJS.register(
 import styles from "./styles/project-thumbnail.module.css";
 import { IUser } from "../../../interfaces/user";
 import { getDatesArray } from "./last-week";
+import { Link } from "react-router-dom";
 
 interface IProjectThumbnailProps {
   projectName: string;
@@ -81,22 +82,24 @@ const ProjectThumbnail = ({
   };
 
   return (
-    <div className={styles.thumbnailContainer}>
-      <button
-        className={styles.hide}
-        onClick={() => {
-          setStatefull((prev) => !prev);
-        }}
-      >
-        State Change!: {statefull + ""}
-      </button>
-      <h5 className={styles.projectName}>{projectName}</h5>
-      <Line
-        style={{ width: "100% !important" }}
-        options={options}
-        data={data}
-      />
-    </div>
+    <Link className={styles.link} to={`/projects/${projectName}`}>
+      <div className={styles.thumbnailContainer}>
+        <button
+          className={styles.hide}
+          onClick={() => {
+            setStatefull((prev) => !prev);
+          }}
+        >
+          State Change!: {statefull + ""}
+        </button>
+        <h5 className={styles.projectName}>{projectName}</h5>
+        <Line
+          style={{ width: "100% !important" }}
+          options={options}
+          data={data}
+        />
+      </div>
+    </Link>
   );
 };
 
