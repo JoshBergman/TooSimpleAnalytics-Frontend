@@ -5,34 +5,18 @@ import Header from "../components/UI/header/header";
 import SingleProject from "../components/projects/single-project/single-project";
 import { UserContext } from "../store/user/user-context";
 import styles from "./styles/single-project-page.module.css";
+import ManageDate from "../components/projects/single-project/manage-date";
 
 const SingleProjectPage = () => {
   const [daysShowingPointer, setDaysShowingPointer] = useState(0);
-  const daysShowing = [7, 30, 90, 365, 999];
+  const [yearsPointer, setYearsPointer] = useState(0);
+
   const currProjRef = useRef<HTMLSelectElement>(null);
   const navigate = useNavigate();
 
   const userCTX = useContext(UserContext).user;
   const projectNames = Object.keys(userCTX.projects);
   const { projectName } = useParams();
-
-  const prevDaysShowing = () => {
-    const currentShowingPointer = daysShowingPointer;
-    if (currentShowingPointer <= 0) {
-      setDaysShowingPointer(daysShowing.length - 1);
-    } else {
-      setDaysShowingPointer(currentShowingPointer - 1);
-    }
-  };
-
-  const nextDaysShowing = () => {
-    const currentShowingPointer = daysShowingPointer;
-    if (currentShowingPointer >= daysShowing.length - 1) {
-      setDaysShowingPointer(0);
-    } else {
-      setDaysShowingPointer(currentShowingPointer + 1);
-    }
-  };
 
   const projSelectChangeHandler = () => {
     const newProjName =
@@ -41,6 +25,18 @@ const SingleProjectPage = () => {
         : projectName;
     navigate(`/projects/${newProjName}`);
   };
+
+  //date managing
+  let existingYears: string[] = [];
+  if (
+    typeof projectName === "string" &&
+    userCTX.projects[projectName] &&
+    userCTX.projects[projectName].viewDates
+  ) {
+    existingYears = Object.keys({ ...userCTX.projects[projectName].viewDates });
+  }
+  const years = [new Date().getFullYear() + ""].concat(existingYears);
+  const daysShowing = [7, 30, 90, 365];
 
   return (
     <>
@@ -64,15 +60,14 @@ const SingleProjectPage = () => {
             ))}
           </select>
         </div>
-        <div className={styles.daysContainer}>
-          <button className={styles.daysButton} onClick={prevDaysShowing}>
-            {"<"}
-          </button>
-          <p className={styles.daysNum}>{daysShowing[daysShowingPointer]}</p>
-          <button className={styles.daysButton} onClick={nextDaysShowing}>
-            {">"}
-          </button>
-        </div>
+        <ManageDate
+          daysShowingPointer={daysShowingPointer}
+          yearsPointer={yearsPointer}
+          setDaysShowingPointer={setDaysShowingPointer}
+          setYearsPointer={setYearsPointer}
+          daysShowing={daysShowing}
+          years={years}
+        />
       </div>
       {projectName && projectNames.includes(projectName) ? (
         <SingleProject

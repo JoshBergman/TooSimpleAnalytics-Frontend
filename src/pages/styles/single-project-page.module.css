@@ -15,24 +15,3 @@
   font-size: 1em;
   display: block;
 }
-
-.daysContainer {
-  margin-left: auto;
-  width: fit-content;
-  border: 1px solid var(--gray-1);
-  display: flex;
-  justify-content: left;
-}
-
-.daysButton {
-  background-color: transparent;
-  border: none;
-  height: 100%;
-}
-
-.daysNum {
-  display: inline;
-  width: 50px;
-  text-align: center;
-  font-size: 1.2em;
-}
