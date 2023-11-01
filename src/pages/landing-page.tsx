@@ -11,6 +11,7 @@ const LandingPage = () => {
         <Link to="/">Landing Page {"/"} ||| </Link>
         <Link to="/projects">Projects Page {"/projects"} ||| </Link>
         <Link to="/error">Error Page {"/anynon-link"} ||| </Link>
+        <Link to="/account">Account Page {"/account"} ||| </Link>
       </div>
     </>
   );

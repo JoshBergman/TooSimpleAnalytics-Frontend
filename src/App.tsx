@@ -4,9 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/landing-page";
 import ProjectsPage from "./pages/projects-page";
 import ErrorPage from "./pages/error-page";
-import { AppStateContext } from "./store/app-state/app-state-context";
 import DevPage from "./pages/dev-page";
 import SingleProjectPage from "./pages/single-project-page";
+import AccountPage from "./pages/account-page";
+
+import { AppStateContext } from "./store/app-state/app-state-context";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,11 @@ const router = createBrowserRouter([
   {
     path: "/projects/:projectName",
     element: <SingleProjectPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/account",
+    element: <AccountPage />,
     errorElement: <ErrorPage />,
   },
   {

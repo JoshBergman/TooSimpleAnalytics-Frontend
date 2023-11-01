@@ -56,7 +56,7 @@ const ManageDate = ({
         <button className={styles.daysButton} onClick={prevDaysShowing}>
           {<IoIosArrowBack className={styles.arrowIcon} />}
         </button>
-        <p className={styles.daysNum}>{daysShowing[daysShowingPointer]}</p>
+        <p className={styles.daysNum}>{daysShowing[daysShowingPointer]}d</p>
         <button className={styles.daysButton} onClick={nextDaysShowing}>
           {<IoIosArrowForward className={styles.arrowIcon} />}
         </button>
