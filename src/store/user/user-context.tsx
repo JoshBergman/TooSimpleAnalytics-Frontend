@@ -7,10 +7,14 @@ export const userDefault: IUser = {
   projectsID: null,
   auth: null,
   actions: {
-    authenticate: () => {},
+    createAccount: (email: string, password: string) => {
+      email;
+      password;
+    },
     addProject: (projectName: string) => {
       projectName;
     },
+    logout: () => {},
   },
 };
 

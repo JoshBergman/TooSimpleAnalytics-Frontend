@@ -14,6 +14,7 @@ export interface IUser {
   projects: { [projectName: string]: project };
   projectsID: null | string;
   actions: {
-    [index: string]: (...args: string[]) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [index: string]: (...args: any) => void;
   };
 }

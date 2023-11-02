@@ -25,7 +25,6 @@ export const createProject = (
     .post(`${staticInfo.uri}/analytic/create-project`, reqData, reqConfig)
     .then((response) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-      console.log(response.data.message);
       if (response.status === 200) {
         refreshProjects();
         return;

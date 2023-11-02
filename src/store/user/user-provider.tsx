@@ -5,6 +5,8 @@ import { IUser } from "../../interfaces/user";
 import { getProjects } from "./api/get-projects";
 import { AppStateContext } from "../app-state/app-state-context";
 import { createProject } from "./api/create-project";
+import { signup } from "./api/signup";
+import { login } from "./api/login";
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -13,7 +15,8 @@ interface IProviderProps {
 export const UserContextProvider = ({ children }: IProviderProps) => {
   const [projects, setProjects] = useState<IUser["projects"]>({});
   const [projectsID, setProjectsID] = useState<null | string>(null);
-  const auth: string | null = localStorage.getItem("jwt") || null;
+  const savedAuth: string | null = localStorage.getItem("jwt") || null;
+  const [auth, setAuth] = useState(savedAuth);
 
   const appCTX = useContext(AppStateContext);
   const addNotification = appCTX.appState.addNotification;
@@ -30,7 +33,26 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     createProject(auth, addNotification, refreshProjects, projectName);
   };
 
-  const authenticate = () => {};
+  const logout = () => {
+    setAuth(null);
+    localStorage.removeItem("jwt");
+  };
+
+  const createAccount = (
+    email: string,
+    password: string,
+    onReqFinish: (success: boolean) => void
+  ) => {
+    signup(setAuth, addNotification, onReqFinish, email, password);
+  };
+
+  const loginAccount = (
+    email: string,
+    password: string,
+    onReqFinish: () => void
+  ) => {
+    login(setAuth, addNotification, onReqFinish, email, password);
+  };
 
   const finalUserData: IUser = {
     ...userDefault,
@@ -38,8 +60,10 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     projectsID,
     auth,
     actions: {
-      authenticate,
+      createAccount,
+      loginAccount,
       addProject,
+      logout,
     },
   };
 
