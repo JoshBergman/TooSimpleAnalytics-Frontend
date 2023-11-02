@@ -5,6 +5,7 @@ import { UserContext } from "../../store/user/user-context";
 import { validateEmail } from "../../validations/validate-email";
 import { validatePassword } from "../../validations/validate-password";
 import { AppStateContext } from "../../store/app-state/app-state-context";
+import styles from "./styles/login-signup.module.css";
 
 const LoginSignup = () => {
   const [isMakingReq, setIsMakingReq] = useState(false);
@@ -75,10 +76,13 @@ const LoginSignup = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <h1>{isLoggingIn ? "Log In" : "Signup"}</h1>
-      <label htmlFor="email">Email: </label>
+    <form onSubmit={submitHandler} className={styles.form}>
+      <h1 className={styles.heading}>{isLoggingIn ? "Log In" : "Signup"}</h1>
+      <label className={styles.label} htmlFor="email">
+        Email:{" "}
+      </label>
       <input
+        className={styles.input}
         style={
           validateEmail(email)[0] ||
           email.length < 2 ||
@@ -93,8 +97,22 @@ const LoginSignup = () => {
         id="email"
         type="email"
       />
-      <label htmlFor="password">Password: </label>
+      <label className={styles.label} htmlFor="password">
+        Password:{" "}
+      </label>
+      <button
+        className={styles.showPass}
+        type="button"
+        onClick={(e: FormEvent) => {
+          e.preventDefault();
+          setShowPassword((prevShow) => !prevShow);
+          setTimeout(() => passwordRef.current?.focus(), 2);
+        }}
+      >
+        {showPassword ? "Hide Password" : "Show Password"}
+      </button>
       <input
+        className={styles.input}
         style={
           validatePassword(password)[0] || password.length < 2
             ? {}
@@ -106,20 +124,12 @@ const LoginSignup = () => {
         id="password"
         type={showPassword ? "text" : "password"}
       />
-      <button
-        type="button"
-        onClick={(e: FormEvent) => {
-          e.preventDefault();
-          setShowPassword((prevShow) => !prevShow);
-          setTimeout(() => passwordRef.current?.focus(), 2);
-        }}
-      >
-        {showPassword ? "Hide Password" : "Show Password"}
+      <button className={styles.actionButton} type="submit">
+        {isLoggingIn ? "Log In" : "Sign Up"}
       </button>
-      <button type="submit">{isLoggingIn ? "Log In" : "Sign Up"}</button>
       <p>
         {isLoggingIn ? "Don't have an account? " : "Already have an account? "}
-        <button onClick={toggleLoggingIn}>
+        <button className={styles.altButton} onClick={toggleLoggingIn}>
           {isMakingReq ? "Loading..." : isLoggingIn ? "Sign Up" : "Log In"}
         </button>
       </p>
