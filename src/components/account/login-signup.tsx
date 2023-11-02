@@ -1,30 +1,42 @@
 import { useState, useContext, useRef, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { UserContext } from "../../store/user/user-context";
+import { validateEmail } from "../../validations/validate-email";
+import { validatePassword } from "../../validations/validate-password";
+import { AppStateContext } from "../../store/app-state/app-state-context";
 
 const LoginSignup = () => {
   const [isMakingReq, setIsMakingReq] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
   const [email, setEmail] = useState("Email");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const userCTX = useContext(UserContext).user;
+  const appCTX = useContext(AppStateContext).appState;
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
+  const navigate = useNavigate();
+
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
+    const emailValidation = validateEmail(email);
+    const passwordValidation = validatePassword(password);
+    if (!emailValidation[0] || !passwordValidation[0]) {
+      appCTX.addNotification("error", "Invalid email and/or password");
+      return;
+    }
+
+    //if validations pass make req
     setIsMakingReq(true);
-
-    //todo add validation for email and password
-
-    //todo add visiblitity button for password
 
     //callback that is called when the req is finished
     const onReqFinish = (success: boolean) => {
       if (success) {
-        //navigate user to projects page or next logical area upon successfull signup
-        //! When user is authed on the account page they are taken to account manage screen
-        //! decide if user should be navigated to projects
+        navigate("/projects");
       }
       setIsMakingReq(false);
     };
@@ -52,14 +64,14 @@ const LoginSignup = () => {
 
   const emailChangeHandler = () => {
     const newEmail = emailRef.current ? emailRef.current.value : email;
-    setEmail(newEmail);
+    setEmail(newEmail.trim());
   };
 
   const passwordChangeHandler = () => {
     const newPassword = passwordRef.current
       ? passwordRef.current.value
       : password;
-    setPassword(newPassword);
+    setPassword(newPassword.trim());
   };
 
   return (
@@ -67,6 +79,13 @@ const LoginSignup = () => {
       <h1>{isLoggingIn ? "Log In" : "Signup"}</h1>
       <label htmlFor="email">Email: </label>
       <input
+        style={
+          validateEmail(email)[0] ||
+          email.length < 2 ||
+          email.toLocaleLowerCase() === "email"
+            ? {}
+            : { borderColor: "red" }
+        }
         onClick={clearDefault}
         value={email}
         onChange={emailChangeHandler}
@@ -76,12 +95,27 @@ const LoginSignup = () => {
       />
       <label htmlFor="password">Password: </label>
       <input
+        style={
+          validatePassword(password)[0] || password.length < 2
+            ? {}
+            : { borderColor: "red" }
+        }
         value={password}
         onChange={passwordChangeHandler}
         ref={passwordRef}
         id="password"
-        type="password"
+        type={showPassword ? "text" : "password"}
       />
+      <button
+        type="button"
+        onClick={(e: FormEvent) => {
+          e.preventDefault();
+          setShowPassword((prevShow) => !prevShow);
+          setTimeout(() => passwordRef.current?.focus(), 2);
+        }}
+      >
+        {showPassword ? "Hide Password" : "Show Password"}
+      </button>
       <button type="submit">{isLoggingIn ? "Log In" : "Sign Up"}</button>
       <p>
         {isLoggingIn ? "Don't have an account? " : "Already have an account? "}

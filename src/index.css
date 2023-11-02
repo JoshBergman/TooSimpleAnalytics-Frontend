@@ -27,6 +27,8 @@ body {
 
   --gray-1: gray;
   --subtle-gray: rgb(69, 69, 69);
+
+  --error-background: "red";
 }
 
 .light {

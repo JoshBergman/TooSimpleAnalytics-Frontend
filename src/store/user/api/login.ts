@@ -16,9 +16,9 @@ export const login = (
   axios
     .post(`${staticInfo.uri}/account/login`, reqData)
     .then((response) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-      const token = response.data.token;
       if (response.status === 200) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+        const token = response.data.token;
         setAuth(token as string);
         localStorage.setItem("jwt", token + "");
         onReqFinish(true);
@@ -27,7 +27,7 @@ export const login = (
         addNotification(
           "error",
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          `Error logging in: ${response.data.message}`
+          `Error logging in: ${response.data.error}`
         );
         return;
       }
