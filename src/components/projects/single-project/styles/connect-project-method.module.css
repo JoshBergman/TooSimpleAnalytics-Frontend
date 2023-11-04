@@ -8,6 +8,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: left;
+  gap: 10px;
 }
 
 .tab {
@@ -15,7 +16,7 @@
   border: 1px solid var(--gray-1);
   color: var(--text-default);
   font-size: 1em;
-  padding: 2px 10px 0px 10px;
+  padding: 4px 20px 2px 20px;
   transition: all 0.18s ease-in-out;
   border-radius: 10px;
 }
@@ -31,4 +32,24 @@
   border-radius: 10px;
   padding: 5px;
   margin-top: 10px;
+
+  height: fit-content;
+  max-height: 550px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.subText {
+  margin: 0 0 10px 0;
+  font-size: 1em;
+  text-align: center;
+}
+
+.snippetPre {
+  margin: 0;
+  padding: 5px;
+}
+
+.codeSnippet {
+  font-size: 1.3em;
 }
