@@ -1,0 +1,35 @@
+.halfButton {
+  width: 45%;
+  height: 100%;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.1s ease-in-out;
+  background-color: red;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.halfButton:nth-child(2) {
+  margin-left: auto;
+  background-color: var(--brand-1);
+}
+
+.halfButton:hover {
+  background-color: var(--brand-hover);
+}
+
+.halfButton:nth-child(1):hover {
+  background-color: rgb(255, 69, 69);
+}
+
+.delAccDiv {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
