@@ -17,7 +17,9 @@ const Account = () => {
   };
 
   const deleteAccountHandler = () => {
+    userCTX.actions.delAccount();
     toggleDeletingAccount();
+    //todo call logout on successful deletion of account
   };
 
   return (

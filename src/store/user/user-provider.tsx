@@ -7,6 +7,7 @@ import { AppStateContext } from "../app-state/app-state-context";
 import { createProject } from "./api/create-project";
 import { signup } from "./api/signup";
 import { login } from "./api/login";
+import { deleteAccount } from "./api/delete-account";
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -54,6 +55,10 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     login(setAuth, addNotification, onReqFinish, email, password);
   };
 
+  const delAccount = () => {
+    deleteAccount(setAuth, addNotification, auth);
+  };
+
   const finalUserData: IUser = {
     ...userDefault,
     projects,
@@ -64,6 +69,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       loginAccount,
       addProject,
       logout,
+      delAccount,
     },
   };
 
