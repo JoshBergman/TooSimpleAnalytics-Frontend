@@ -47,7 +47,6 @@ const SingleProjectPage = () => {
   return (
     <>
       <Header />
-      <button onClick={toggleShowingAddView}>Connect Project</button>
       {showingAddView && (
         <ConnectProjectModal
           toggleShowing={toggleShowingAddView}
@@ -95,6 +94,11 @@ const SingleProjectPage = () => {
           exist!)
         </h2>
       )}
+      <div className={styles.bottomContainer}>
+        <button className="actionButton" onClick={toggleShowingAddView}>
+          Connect Project
+        </button>
+      </div>
     </>
   );
 };
