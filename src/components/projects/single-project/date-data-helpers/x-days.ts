@@ -15,7 +15,7 @@ export const last_x_days = (
       date.setDate(today.getDate() - i);
 
       const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is 0-indexed
+      const month = String(date.getMonth() + 1); // Month is 0-indexed
       const day = String(date.getDate());
 
       const formattedDate = `${useYear ? useYear : year}/${month}/${day}`;
