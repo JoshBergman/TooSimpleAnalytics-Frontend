@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import styles from "./styles/connect-project-method.module.css";
 import { get_connect_methods, staticInfo } from "../../../store/static-info";
 import { UserContext } from "../../../store/user/user-context";
+import CopyButton from "./copy-button";
 
 interface IConnectProjectMethodsProps {
   projName: string;
@@ -42,6 +43,8 @@ const ConnectProjectMethods = ({ projName }: IConnectProjectMethodsProps) => {
     return tabs;
   };
 
+  const connect_method = get_connect_methods(methodShowing, projLink) as string;
+
   return (
     <div className={styles.container}>
       <h5 className={styles.subText}>
@@ -50,10 +53,9 @@ const ConnectProjectMethods = ({ projName }: IConnectProjectMethodsProps) => {
       </h5>
       <div className={styles.tabsContainer}>{getTabs()}</div>
       <div className={styles.methodContainer}>
+        <CopyButton copyContents={connect_method} />
         <pre className={styles.snippetPre}>
-          <code className={styles.codeSnippet}>
-            {get_connect_methods(methodShowing, projLink) as string}
-          </code>
+          <code className={styles.codeSnippet}>{connect_method}</code>
         </pre>
       </div>
     </div>

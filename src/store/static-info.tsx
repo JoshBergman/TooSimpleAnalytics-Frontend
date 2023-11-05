@@ -8,8 +8,7 @@ export const get_connect_methods = (
   keys?: boolean
 ) => {
   const connect_methods: { [index: string]: React.ReactNode } = {
-    "Recommended (JS)": `
-  export const addSiteView = () => {
+    "Recommended (JS)": `export const addSiteView = () => {
   const milliseconds_Until_Next_View_Counts = 86400000; //1 day in milliseconds
   const viewUrl = "${projLink}";
 
