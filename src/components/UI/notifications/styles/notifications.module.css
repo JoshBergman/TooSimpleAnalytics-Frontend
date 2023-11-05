@@ -4,6 +4,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .notification-error,
@@ -11,16 +12,34 @@
 .notification-success {
   width: clamp(240px, 60%, 500px);
   margin: 0 auto;
+  border: 3px solid black;
+  border-radius: 8px;
+  padding: 5px;
+  padding-bottom: 10px;
+
+  font-size: 1.15em;
+  color: white;
 }
 
 .notification-error {
-  background-color: red;
+  background-color: var(--error);
+  border-color: var(--error-border);
 }
 
 .notification-info {
-  background-color: blue;
+  background-color: var(--info);
+  border-color: var(--info-border);
 }
 
 .notification-success {
-  background-color: green;
+  background-color: var(--success);
+  border-color: var(--success-border);
+}
+
+.icon {
+  font-size: 1.5em;
+  margin: 0;
+  margin-right: 5px;
+
+  transform: translateY(6px);
 }

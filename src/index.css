@@ -53,6 +53,13 @@ body {
   --brand-1: rgb(77, 158, 208);
   --brand-hover: rgb(91, 178, 231);
   --shared-color: pink;
+
+  --error: rgba(231, 131, 131, 0.928);
+  --error-border: rgba(231, 131, 131, 0.928);
+  --info: rgba(84, 84, 227, 0.908);
+  --info-border: rgba(84, 84, 227, 0.908);
+  --success: rgba(17, 178, 17, 0.901);
+  --success-border: rgba(17, 178, 17, 0.901);
 }
 
 .actionButton {
