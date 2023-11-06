@@ -13,7 +13,7 @@ interface INewProjectFormProps {
 }
 
 const NewProjectForm = ({ setMakingNewProject }: INewProjectFormProps) => {
-  const [projNameState, setProjNameState] = useState("Project Name");
+  const [projNameState, setProjNameState] = useState("Project-Name");
   const projectNameRef = useRef<HTMLInputElement>(null);
 
   const makeNotification = useContext(AppStateContext).appState.addNotification;
@@ -99,7 +99,7 @@ const NewProjectForm = ({ setMakingNewProject }: INewProjectFormProps) => {
           type="text"
           value={projNameState}
           onClick={() =>
-            projNameState === "Project Name" ? setProjNameState("") : () => {}
+            projNameState === "Project-Name" ? setProjNameState("") : () => {}
           }
         />
         <button className="actionButton" type="submit">
