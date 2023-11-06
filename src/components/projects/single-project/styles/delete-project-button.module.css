@@ -1,0 +1,15 @@
+.container {
+  width: clamp(250px, 60vw, 600px);
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.heading {
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}

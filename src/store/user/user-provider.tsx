@@ -8,6 +8,7 @@ import { createProject } from "./api/create-project";
 import { signup } from "./api/signup";
 import { login } from "./api/login";
 import { deleteAccount } from "./api/delete-account";
+import { deleteProject } from "./api/delete-project";
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -31,11 +32,12 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     getProjects(auth, setProjects, setProjectsID, addNotification);
   }, [auth, addNotification]);
 
+  //whenever projects are modified use refreshProjects to query projects.
+  const refreshProjects = () => {
+    getProjects(auth, setProjects, setProjectsID, addNotification);
+  };
+
   const addProject = (projectName: string) => {
-    //call api to create project, then refresh projects.
-    const refreshProjects = () => {
-      getProjects(auth, setProjects, setProjectsID, addNotification);
-    };
     createProject(auth, addNotification, refreshProjects, projectName);
   };
 
@@ -64,6 +66,10 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     deleteAccount(setAuth, addNotification, auth);
   };
 
+  const delProject = (projectName: string) => {
+    deleteProject(auth, projectName, addNotification, refreshProjects);
+  };
+
   const finalUserData: IUser = {
     ...userDefault,
     projects,
@@ -75,6 +81,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       addProject,
       logout,
       delAccount,
+      delProject,
     },
   };
 

@@ -1,12 +1,13 @@
 import { useContext, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+import { UserContext } from "../store/user/user-context";
 import Header from "../components/UI/header/header";
 import SingleProject from "../components/projects/single-project/single-project";
-import { UserContext } from "../store/user/user-context";
-import styles from "./styles/single-project-page.module.css";
 import ManageDate from "../components/projects/single-project/manage-date";
 import ConnectProjectModal from "../components/projects/single-project/connect-project-modal";
+import styles from "./styles/single-project-page.module.css";
+import DeleteProjectButton from "../components/projects/single-project/single-project-components/delete-project-button";
 
 const SingleProjectPage = () => {
   const [daysShowingPointer, setDaysShowingPointer] = useState(0);
@@ -98,6 +99,7 @@ const SingleProjectPage = () => {
         <button className="actionButton" onClick={toggleShowingAddView}>
           Connect Project
         </button>
+        <DeleteProjectButton projectName={projectName} />
       </div>
     </>
   );

@@ -8,17 +8,17 @@
 }
 
 .form {
-  width: clamp(260px, 60%, 700px);
-  margin: 20% auto 0 auto;
-  background-color: var(--page-secondary);
-}
-
-.headingContainer {
+  width: clamp(250px, 60vw, 800px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .heading {
   display: inline-block;
   margin: 0;
+  margin-top: 10px;
 }
 
 .cancelButton {
@@ -26,17 +26,22 @@
 
   color: var(--brand-1);
   border: 2px solid var(--brand-1);
-  border-radius: 14px;
+  border-radius: 23px;
   background-color: transparent;
 
   margin: 5px;
   font-size: 1.05em;
-  font-weight: bold;
+  padding: 8px;
 }
 
 .cancelButton:hover {
   cursor: pointer;
   color: var(--text-default);
-  background-color: var(--brand-1);
   border-color: var(--text-default);
+}
+
+@media (max-width: 500px) {
+  .form {
+    width: 85vw;
+  }
 }

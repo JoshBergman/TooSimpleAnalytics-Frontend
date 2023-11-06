@@ -81,3 +81,11 @@ body {
 .actionButton:hover {
   background-color: var(--brand-hover);
 }
+
+.negative {
+  background-color: var(--error);
+}
+
+.negative:hover {
+  background-color: rgb(211, 50, 50);
+}
