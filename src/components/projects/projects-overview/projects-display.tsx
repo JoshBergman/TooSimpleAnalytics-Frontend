@@ -40,11 +40,13 @@ const ProjectsDisplay = ({ setMakingNewProject }: IProjectsDisplayProps) => {
           New Project
         </button>
       </div>
-      <div className={styles.projectsContainer}>
-        {Object.keys(projects).length >= 1
-          ? renderProjects()
-          : "Loading (May take up to 20 seconds!) or no projects are found. Please re-log if your projects aren't showing up."}
-      </div>
+      {Object.keys(projects).length >= 1 ? (
+        <div className={styles.projectsContainer}>{renderProjects()}</div>
+      ) : (
+        <p className={styles.noProjText}>
+          No projects found! Create a project to get started.
+        </p>
+      )}
     </>
   );
 };

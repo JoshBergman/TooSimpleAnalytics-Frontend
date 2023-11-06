@@ -13,8 +13,13 @@ interface IProviderProps {
   children: React.ReactNode;
 }
 
+//once projects are queried it will set projects state to the queried projects. If it is empty then render a no projects found screen
+const loadingProj: IUser["projects"]["x"] = { totalViews: 0, viewDates: {} };
+
 export const UserContextProvider = ({ children }: IProviderProps) => {
-  const [projects, setProjects] = useState<IUser["projects"]>({});
+  const [projects, setProjects] = useState<IUser["projects"]>({
+    "Projects Loading...": loadingProj,
+  });
   const [projectsID, setProjectsID] = useState<null | string>(null);
   const savedAuth: string | null = localStorage.getItem("jwt") || null;
   const [auth, setAuth] = useState(savedAuth);

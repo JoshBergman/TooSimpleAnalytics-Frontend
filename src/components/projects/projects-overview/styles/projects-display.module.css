@@ -1,12 +1,13 @@
 .projectsContainer {
   width: clamp(800px, 70%, 1500px);
   margin: 0 auto;
+  margin-top: 40px;
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   grid-auto-rows: auto;
-  column-gap: 40px;
-  row-gap: 20px;
+  column-gap: 60px;
+  row-gap: 40px;
 }
 
 .project {
@@ -30,13 +31,26 @@
 .newProjButton {
   background-color: transparent;
   border: 2px solid var(--brand-1);
-  border-radius: 20px;
-  padding: 10px;
+  color: var(--brand-1);
+  border-radius: 24px;
+  padding: 10px 15px;
   height: 50%;
+  transition: all 0.34s ease-out;
+  font-size: 0.94em;
 }
 
 .newProjButton:hover {
   cursor: pointer;
+  transition: all 0.03s ease-in-out;
+  border-color: var(--text-default);
+  color: var(--text-default);
+}
+
+.noProjText {
+  font-size: 1.3em;
+  text-align: center;
+  width: 100%;
+  margin-top: 100px;
 }
 
 @media (max-width: 1700px) {

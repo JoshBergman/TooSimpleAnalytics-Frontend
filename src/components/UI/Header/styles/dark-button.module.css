@@ -11,6 +11,14 @@
 .iconSun,
 .iconMoon {
   font-size: 1.8em;
+  transition: all 0.2s ease-in-out;
+}
+
+.iconSun:hover {
+  transform: rotate(-55deg);
+}
+.iconMoon:hover {
+  transform: rotate(55deg);
 }
 
 .iconSun {
