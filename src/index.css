@@ -25,6 +25,7 @@ body {
 
   --background-1: #0a0a0a;
 
+  --subtle-text: gray;
   --gray-1: gray;
   --subtle-gray: rgb(69, 69, 69);
 }
@@ -37,6 +38,7 @@ body {
 
   --background-1: rgb(232, 232, 232);
 
+  --subtle-text: gray;
   --gray-1: rgb(63, 63, 63);
   --subtle-gray: rgb(199, 199, 199);
 }
@@ -50,9 +52,9 @@ body {
   min-height: 100vh;
 
   /* shared light and dark colors */
-  --brand-1: rgb(77, 158, 208);
-  --brand-hover: rgb(91, 178, 231);
-  --shared-color: pink;
+  /* --brand-1: rgb(77, 158, 208); Original brand color in the case I want to switch back */
+  --brand-1: rgb(54, 125, 211);
+  --brand-hover: rgb(71, 169, 231);
 
   --error: rgba(231, 131, 131, 0.928);
   --error-border: rgba(231, 131, 131, 0.928);
@@ -83,9 +85,9 @@ body {
 }
 
 .negative {
-  background-color: var(--error);
+  background-color: rgb(211, 50, 50);
 }
 
 .negative:hover {
-  background-color: rgb(211, 50, 50);
+  background-color: var(--error);
 }

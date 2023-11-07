@@ -41,6 +41,7 @@ const SingleProjectPage = () => {
   const years = [new Date().getFullYear() + ""].concat(existingYears);
   const daysShowing = [7, 30, 90, 365]; //options to view length of graph
 
+  //brings up the menu for implementing analytics to your project
   const toggleShowingAddView = () => {
     setShowingAddView((prevAddView) => !prevAddView);
   };
@@ -67,7 +68,7 @@ const SingleProjectPage = () => {
             defaultValue={projectName}
           >
             {projectNames.map((projName) => (
-              <option key={projName} id={projName}>
+              <option className={styles.option} key={projName} id={projName}>
                 {projName}
               </option>
             ))}

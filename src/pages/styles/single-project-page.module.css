@@ -8,12 +8,27 @@
 
 .projSelect {
   font-size: 1.05em;
-  padding: 6px;
+  padding: 5px;
+  background-color: var(--background-1);
+  color: var(--text-default);
+  border: 1px solid var(--subtle-gray);
+  border-radius: 4px;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  max-width: 150px;
+}
+
+.option {
+  color: var(--text-default);
+  background-color: var(--background-1);
 }
 
 .projSelectLabel {
   font-size: 1em;
   display: block;
+  color: var(--subtle-text);
 }
 
 .bottomContainer {

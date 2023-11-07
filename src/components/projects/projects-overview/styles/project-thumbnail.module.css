@@ -2,7 +2,7 @@
   width: clamp(250px, 100%, 1200px);
   padding: 10px;
   border: 2px solid gray;
-  background-color: rgb(32, 32, 32);
+  background-color: var(--background-1);
 
   overflow: auto !important;
 
