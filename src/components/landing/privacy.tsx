@@ -8,11 +8,11 @@ const Privacy = () => {
       <p className={simple_and_fast_styles.p}>Own your data</p>
       <ul className={styles.ul}>
         <li className={styles.li}>You data will never be sold</li>
+        <li className={styles.li}>Your visitors will never be tracked</li>
         <li className={styles.li}>
           Deleting your account actually removes your information, as well as
           ANY related data
         </li>
-        <li className={styles.li}>Your visitors are never tracked</li>
       </ul>
     </div>
   );

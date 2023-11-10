@@ -10,7 +10,7 @@ interface IProviderProps {
 export const AppStateContextProvider = ({ children }: IProviderProps) => {
   const [notifications, setNotifications] = useState<string[][]>([]);
   const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("theme") === "dark"
+    !(localStorage.getItem("theme") === "light")
   );
 
   const toggleDarkMode = () => {

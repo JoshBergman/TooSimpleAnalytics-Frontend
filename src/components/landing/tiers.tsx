@@ -29,18 +29,23 @@ const Tiers = () => {
             <h6 className={styles.tierDesc}>Whats Included:</h6>
             <li className={styles.li}>
               <FaLongArrowAltRight className={styles.arrow} />
-              2.5k Views/Day
-            </li>
-            <li className={styles.li}>
-              <FaLongArrowAltRight className={styles.arrow} />5 Projects
+              <strong className={styles.strongDesc}>2.5k</strong> Views/Day
             </li>
             <li className={styles.li}>
               <FaLongArrowAltRight className={styles.arrow} />
-              JS/TS View Script
+              <strong className={styles.strongDesc}>5</strong> Projects
             </li>
             <li className={styles.li}>
               <FaLongArrowAltRight className={styles.arrow} />
-              Fast & Simple Setup
+              <strong className={styles.strongDesc}>
+                Integration Script
+              </strong>{" "}
+              ( JS / TS )
+            </li>
+            <li className={styles.li}>
+              <FaLongArrowAltRight className={styles.arrow} />
+              <strong className={styles.strongDesc}>Fast</strong> &{" "}
+              <strong className={styles.strongDesc}>Simple</strong> Setup
             </li>
           </ul>
         </div>

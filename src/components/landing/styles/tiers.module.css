@@ -23,11 +23,12 @@
 
 .tierDesc {
   margin: 0;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: var(--subtle-text);
 }
 
-.strong {
+.strong,
+.strongDesc {
   color: var(--text-default);
   font-size: 1.5em;
 }
@@ -46,6 +47,7 @@
 
 .ul {
   border-top: 2px solid var(--subtle-gray);
+  color: var(--subtle-text);
   padding-top: 10px;
   font-size: 1.2em;
   list-style-type: none;
@@ -60,4 +62,9 @@
   margin: 0 10px 0 -10px;
   transform: translateY(5px);
   font-size: 1.3em;
+}
+
+.strongDesc {
+  font-size: 1.05em;
+  font-weight: normal;
 }
