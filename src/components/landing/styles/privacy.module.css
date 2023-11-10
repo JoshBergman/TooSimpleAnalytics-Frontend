@@ -1,0 +1,17 @@
+.container {
+  text-align: center;
+  width: fit-content;
+  max-width: 820px;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+
+.ul {
+  text-align: left;
+  width: fit-content;
+  font-size: 1.3em;
+}
+
+.li {
+  margin: 20px 0;
+}

@@ -84,6 +84,23 @@ body {
   background-color: var(--brand-hover);
 }
 
+.circleButton {
+  background-color: var(--brand-1);
+  border: 2px solid var(--brand-1);
+  color: white;
+  border-radius: 40px;
+  font-size: 1.14em;
+  padding: 15px;
+  transition: all 0.13s ease-in-out;
+}
+
+.circleButton:hover {
+  cursor: pointer;
+  border-color: var(--text-default);
+  background-color: transparent;
+  color: var(--text-default);
+}
+
 .negative {
   background-color: rgb(211, 50, 50);
 }

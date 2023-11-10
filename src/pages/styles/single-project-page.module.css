@@ -25,6 +25,11 @@
   background-color: var(--background-1);
 }
 
+.projSelect:hover,
+.option:hover {
+  cursor: pointer;
+}
+
 .projSelectLabel {
   font-size: 1em;
   display: block;

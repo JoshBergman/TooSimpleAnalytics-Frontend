@@ -1,0 +1,63 @@
+.container {
+  margin-top: 200px;
+}
+
+.tiersContainer {
+  width: clamp(250px, 60%, 1000px);
+  margin: 0 auto;
+  display: flex;
+}
+
+.tier {
+  border: 2px solid var(--subtle-gray);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.tierHeading {
+  text-align: center;
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.tierDesc {
+  margin: 0;
+  margin-bottom: 20px;
+  color: var(--subtle-text);
+}
+
+.strong {
+  color: var(--text-default);
+  font-size: 1.5em;
+}
+
+.monthly,
+.yearly {
+  text-align: center;
+  color: var(--subtle-text);
+  font-size: 1em;
+  margin: 0;
+}
+
+.yearly {
+  margin-bottom: 20px;
+}
+
+.ul {
+  border-top: 2px solid var(--subtle-gray);
+  padding-top: 10px;
+  font-size: 1.2em;
+  list-style-type: none;
+}
+
+.li {
+  margin: 10px 0;
+}
+
+.arrow {
+  color: var(--success);
+  margin: 0 10px 0 -10px;
+  transform: translateY(5px);
+  font-size: 1.3em;
+}
