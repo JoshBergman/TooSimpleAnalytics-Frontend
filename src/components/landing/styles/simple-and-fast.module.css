@@ -21,3 +21,15 @@
   font-style: italic;
   color: var(--subtle-text);
 }
+
+.video {
+  width: clamp(240px, 60%, 1000px);
+  border: 2px solid var(--subtle-gray);
+  border-radius: 10px;
+}
+
+@media (max-width: 1000px) {
+  .video {
+    width: 80%;
+  }
+}

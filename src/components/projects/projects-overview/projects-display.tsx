@@ -44,7 +44,7 @@ const ProjectsDisplay = ({ setMakingNewProject }: IProjectsDisplayProps) => {
         <div className={styles.projectsContainer}>{renderProjects()}</div>
       ) : (
         <p className={styles.noProjText}>
-          No projects found! Create a project to get started.
+          No projects found. Create a project to get started!
         </p>
       )}
     </>
