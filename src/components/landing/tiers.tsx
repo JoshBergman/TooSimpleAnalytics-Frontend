@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
+import simple_and_fast_styles from "./styles/simple-and-fast.module.css";
 import styles from "./styles/tiers.module.css";
 
 const Tiers = () => {
@@ -12,6 +13,10 @@ const Tiers = () => {
 
   return (
     <div className={styles.container}>
+      <h1 className={simple_and_fast_styles.heading}>Tiers</h1>
+      <p className={simple_and_fast_styles.subText}>
+        Higher Limit Tiers Coming Soon
+      </p>
       <div className={styles.tiersContainer}>
         <div className={styles.tier}>
           <h5 className={styles.tierHeading}>Standard</h5>
