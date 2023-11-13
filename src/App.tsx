@@ -9,6 +9,7 @@ import SingleProjectPage from "./pages/single-project-page";
 import AccountPage from "./pages/account-page";
 
 import { AppStateContext } from "./store/app-state/app-state-context";
+import Footer from "./components/UI/footer/footer";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,10 @@ function App() {
 
   return (
     <div className={isDarkMode ? "dark" : "light"}>
-      <RouterProvider router={router} />
+      <div style={{ minHeight: "100vh" }}>
+        <RouterProvider router={router} />
+      </div>
+      <Footer />
     </div>
   );
 }

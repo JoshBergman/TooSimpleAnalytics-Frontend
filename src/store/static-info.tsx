@@ -1,5 +1,10 @@
 export const staticInfo = {
   uri: "https://tsa-real-765f9ae13226.herokuapp.com",
+  plugLinks: {
+    author: "https://joshuabergman.dev/",
+    feedback: "/feedback",
+    sourceCode: "https://github.com/JoshBergman/TooSimpleAnalytics-Frontend",
+  },
 };
 
 export const get_connect_methods = (

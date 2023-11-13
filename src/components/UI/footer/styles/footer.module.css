@@ -1,0 +1,43 @@
+.footerContainer {
+  background-color: var(--background-1);
+  border-top: 2px solid var(--subtle-gray);
+
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  padding-bottom: 10px;
+}
+
+.heading {
+  color: var(--subtle-text);
+  font-size: 1em;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 25px;
+}
+
+.copyright {
+  display: absolute;
+  bottom: 0px;
+  left: 0;
+  color: var(--subtle-text);
+  background-color: var(--background-1);
+  margin: 0;
+  padding: 10px 0;
+}
+
+.link {
+  color: var(--subtle-text);
+  margin: 0;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
