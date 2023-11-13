@@ -31,10 +31,18 @@
   justify-content: space-evenly;
   width: 80%;
   margin: 0 auto;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
 }
 
 .subContainer {
   width: 100%;
+}
+
+.video {
+  width: 100%;
+  border: 2px solid var(--subtle-gray);
+  border-radius: 10px;
 }
 
 @media (min-width: 1200px) {
@@ -47,6 +55,8 @@
 @media (max-width: 1000px) {
   .container {
     flex-direction: column;
+    padding-top: 10vh;
+    gap: 50px;
   }
   .subContainer {
     text-align: center;

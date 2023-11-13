@@ -1,4 +1,3 @@
-import easyDemo from "../../../public/easy-setup.mp4";
 import styles from "./styles/simple-and-fast.module.css";
 
 const SimpleAndFast = () => {
@@ -9,8 +8,8 @@ const SimpleAndFast = () => {
         Be setup within a minute of creating your account
       </p>
       <h4 className={styles.subText}>It{"'"}s that easy!</h4>
-      <video className={styles.video} autoPlay={true} loop={true}>
-        <source src={easyDemo} type="video/mp4" />
+      <video className={styles.video} autoPlay={true} loop={true} muted={true}>
+        <source src="/easy-setup.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>

@@ -18,7 +18,17 @@ const TheWhat = () => {
           Get Started
         </button>
       </div>
-      <div className={styles.subContainer}>right side or bottom</div>
+      <div className={styles.subContainer}>
+        <video
+          className={styles.video}
+          autoPlay={true}
+          loop={true}
+          muted={true}
+        >
+          <source src="/landing-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
   );
 };
