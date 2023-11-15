@@ -10,3 +10,10 @@
   font-size: 1em;
   white-space: nowrap;
 }
+
+.img {
+  width: 24px;
+  display: inline;
+  transform: translateY(7px);
+  margin-right: 6px;
+}

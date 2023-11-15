@@ -17,6 +17,7 @@
   font-size: 1.14em;
   padding: 15px;
   transition: all 0.13s ease-in-out;
+  margin-top: 10px;
 }
 
 .signupBtn:hover {
