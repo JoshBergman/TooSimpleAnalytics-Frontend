@@ -43,7 +43,7 @@ function App() {
   const isDarkMode = useContext(AppStateContext).appState.isDarkMode;
 
   return (
-    <div className={isDarkMode ? "dark" : "light"}>
+    <div id="app-root" className={isDarkMode ? "dark" : "light"}>
       <div style={{ minHeight: "100vh" }}>
         <RouterProvider router={router} />
       </div>

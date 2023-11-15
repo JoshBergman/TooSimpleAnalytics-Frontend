@@ -4,11 +4,19 @@ import { AppStateContext } from "../../../../store/app-state/app-state-context";
 
 import styles from "../styles/dark-button.module.css";
 
-const DarkButton = () => {
+interface IDarkButtonProps {
+  style?: React.CSSProperties;
+}
+
+const DarkButton = ({ style }: IDarkButtonProps) => {
   const { isDarkMode, toggleDarkMode } = useContext(AppStateContext).appState;
 
   return (
-    <button className={styles.darkButton} onClick={toggleDarkMode}>
+    <button
+      style={style}
+      className={styles.darkButton}
+      onClick={toggleDarkMode}
+    >
       {isDarkMode ? (
         <BiSolidSun className={styles.iconSun} />
       ) : (
