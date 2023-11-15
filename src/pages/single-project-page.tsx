@@ -91,10 +91,12 @@ const SingleProjectPage = () => {
           year={years[yearsPointer]}
         />
       ) : (
-        <h2>
-          Loading... May take up to 20 seconds. (Or this project doesn{"'"}t
-          exist!)
-        </h2>
+        <SingleProject
+          projectName="Loading"
+          projectInfo={{ totalViews: 0 }}
+          days={0}
+          year={"0"}
+        />
       )}
       <div className={styles.bottomContainer}>
         <button className="actionButton" onClick={toggleShowingAddView}>

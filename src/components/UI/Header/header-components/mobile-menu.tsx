@@ -47,10 +47,12 @@ const MobileMenu = ({ toggleShowingMenu, has_jwt }: IMobileMenuProps) => {
                 to="/account"
                 className={styles.navLink}
               >
-                {has_jwt ? "Account" : "Sign up"}
+                {has_jwt ? "Account" : "Login / Signup"}
               </Link>
             </nav>
-            <button className="actionButton">Close</button>
+            <button onClick={toggleShowingMenu} className="actionButton">
+              Close
+            </button>
           </div>
         </Modal>,
         document.getElementById("app-root") as HTMLElement,

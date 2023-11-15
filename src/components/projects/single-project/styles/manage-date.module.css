@@ -6,7 +6,6 @@
 .daysContainer,
 .yearsContainer {
   margin-top: auto;
-  width: 100%;
   border: 1px solid transparent;
   display: flex;
   justify-content: space-around;
@@ -14,11 +13,13 @@
 
 .daysButton {
   background-color: transparent;
-  border: none;
+  border: 2px solid transparent;
   transition: all 0.2s ease-out;
   width: fit-content;
   height: 100%;
   color: var(--text-default);
+  font-size: 1em;
+  padding: 0;
 }
 
 .daysButton:hover {
@@ -42,11 +43,17 @@
 .arrowIcon,
 .arrowIconSmall {
   height: 100%;
-  width: 100%;
+
   font-size: 1.7em;
   margin-top: 4px;
 }
 
 .arrowIconSmall {
   font-size: 1.25em;
+}
+
+@media (max-width: 800px) {
+  .daysButton {
+    font-size: 15px;
+  }
 }
