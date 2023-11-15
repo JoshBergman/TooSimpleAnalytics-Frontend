@@ -32,6 +32,11 @@
 }
 
 @media (max-width: 1000px) {
+  .p {
+    width: 93%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
   .video {
     width: 80%;
   }

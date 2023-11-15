@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "../../ui-components/modal";
 
 import styles from "../styles/mobile-menu.module.css";
@@ -11,6 +11,13 @@ interface IMobileMenuProps {
 }
 
 const MobileMenu = ({ toggleShowingMenu, has_jwt }: IMobileMenuProps) => {
+  const navigate = useNavigate();
+
+  const logoClickHandler = () => {
+    linkClickHandler();
+    navigate("/");
+  };
+
   const linkClickHandler = () => {
     toggleShowingMenu();
   };
@@ -21,7 +28,7 @@ const MobileMenu = ({ toggleShowingMenu, has_jwt }: IMobileMenuProps) => {
         <Modal closeModal={toggleShowingMenu}>
           <div className={styles.container}>
             <nav className={styles.nav}>
-              <div className={styles.logoContainer}>
+              <div onClick={logoClickHandler} className={styles.logoContainer}>
                 <img className={styles.img} src="/favicon.ico" />
                 <h2 className={styles.heading}>Too Simple Analytics</h2>
               </div>

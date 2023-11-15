@@ -54,6 +54,7 @@
 
 @media (max-width: 900px) {
   .header {
+    width: 80%;
     display: flex;
     justify-content: space-between;
     padding-top: 20px;

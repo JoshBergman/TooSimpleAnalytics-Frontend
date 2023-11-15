@@ -7,6 +7,8 @@
   border: 2px solid transparent;
   color: var(--text-default);
   font-size: 3.4em;
+  width: fit-content;
+  padding: 0;
 }
 
 .hamburgerIcon {
