@@ -10,12 +10,6 @@
   row-gap: 40px;
 }
 
-.project {
-  background-color: darkcyan;
-  width: 150px;
-  height: 150px;
-}
-
 .titleContainer {
   margin: 0 auto;
 
@@ -62,9 +56,11 @@
 @media (max-width: 1000px) {
   .projectsContainer {
     width: clamp(260px, 80%, 500px);
+    min-width: fit-content;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .project {
