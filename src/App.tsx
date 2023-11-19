@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import LandingPage from "./pages/landing-page";
@@ -10,6 +10,7 @@ import AccountPage from "./pages/account-page";
 
 import { AppStateContext } from "./store/app-state/app-state-context";
 import Footer from "./components/UI/footer/footer";
+import { addSiteView } from "./add-site-view";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
 
 function App() {
   const isDarkMode = useContext(AppStateContext).appState.isDarkMode;
+
+  useEffect(() => {
+    addSiteView();
+  }, []);
 
   return (
     <div id="app-root" className={isDarkMode ? "dark" : "light"}>

@@ -1,21 +1,7 @@
-export const staticInfo = {
-  uri: "https://tsa-real-765f9ae13226.herokuapp.com",
-  plugLinks: {
-    author: "https://joshuabergman.dev/",
-    feedback: "/feedback",
-    sourceCode: "https://github.com/JoshBergman/TooSimpleAnalytics-Frontend",
-  },
-};
-
-export const get_connect_methods = (
-  connect_method: string,
-  projLink: string,
-  keys?: boolean
-) => {
-  const connect_methods: { [index: string]: React.ReactNode } = {
-    "Recommended (JS)": `export const addSiteView = () => {
+export const addSiteView = () => {
   const milliseconds_Until_Next_View_Counts = 86400000; //1 day in milliseconds
-  const viewUrl = "${projLink}";
+  const viewUrl =
+    "https://tsa-real-765f9ae13226.herokuapp.com/analytic/view/waOVG6gLds1700055514-Too-Simple-Analytics";
 
   const saveDate = () => {
     const thisDateAsString = new Date().getTime() + "";
@@ -49,13 +35,4 @@ export const get_connect_methods = (
       console.error(err);
     }
   }
-};`,
-    "Raw Link": `${projLink}`,
-  };
-
-  if (keys) {
-    return Object.keys(connect_methods);
-  }
-
-  return connect_methods[connect_method];
 };
