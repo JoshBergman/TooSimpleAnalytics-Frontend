@@ -16,9 +16,11 @@ Too Simple Analytics started out as a personal script for tracking views of my p
 
 ## 👉 (Coming Soon Features)
 
-- See Where Your Views Are From
+- See View Origins
 - Know which views are robots
 - Higher Limit Tier (Paid Service)
+- 2 Factor Authentication
+- Browser Identifactions
 
 ## 👉 Live
 
