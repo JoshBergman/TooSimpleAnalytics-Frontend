@@ -9,7 +9,7 @@ import styles from "./styles/login-signup.module.css";
 import VerificationModal from "./verification-modal";
 
 const LoginSignup = () => {
-  const [isVerifyingEmail, setIsVerifyingEmail] = useState(true);
+  const [isVerifyingEmail, setIsVerifyingEmail] = useState(false);
   const [isMakingReq, setIsMakingReq] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(true);
   const [email, setEmail] = useState("Email");
