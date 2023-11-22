@@ -1,35 +1,26 @@
 import axios from "axios";
 import { staticInfo } from "../../static-info";
 
-export const signup = (
-  setAuth: (newAuth: string) => void,
+export const createVerification = (
   addNotification: (type: string, msg: string) => void,
   onReqFinish: (success: boolean) => void,
-  email: string,
-  password: string,
-  verificationCode: string
+  email: string
 ) => {
   const reqData = {
     email,
-    password,
-    verification: verificationCode,
   };
 
   axios
-    .post(`${staticInfo.uri}/account/create`, reqData)
+    .post(`${staticInfo.uri}/account/create-verification`, reqData)
     .then((response) => {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-      const token = response.data.token;
       if (response.status === 200) {
-        setAuth(token as string);
-        localStorage.setItem("jwt", token + "");
         onReqFinish(true);
       } else {
         onReqFinish(false);
         addNotification(
           "error",
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          `Error signing up: ${response.data.error + ""}`
+          `Error verifying: ${response.data.error + ""}`
         );
         return;
       }
@@ -39,7 +30,7 @@ export const signup = (
       onReqFinish(false);
       addNotification(
         "error",
-        "Error signing up. Please try again in one minute."
+        "Error verifying. Please try again in one minute."
       );
     });
 };

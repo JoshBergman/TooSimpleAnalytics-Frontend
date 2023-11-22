@@ -9,6 +9,7 @@ import { signup } from "./api/signup";
 import { login } from "./api/login";
 import { deleteAccount } from "./api/delete-account";
 import { deleteProject } from "./api/delete-project";
+import { createVerification } from "./api/create-verification";
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -49,9 +50,24 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const createAccount = (
     email: string,
     password: string,
+    verificationCode: string,
     onReqFinish: (success: boolean) => void
   ) => {
-    signup(setAuth, addNotification, onReqFinish, email, password);
+    signup(
+      setAuth,
+      addNotification,
+      onReqFinish,
+      email,
+      password,
+      verificationCode
+    );
+  };
+
+  const sendVerification = (
+    onReqFinish: (success: boolean) => void,
+    email: string
+  ) => {
+    createVerification(addNotification, onReqFinish, email);
   };
 
   const loginAccount = (
@@ -82,6 +98,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       logout,
       delAccount,
       delProject,
+      sendVerification,
     },
   };
 
