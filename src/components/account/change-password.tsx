@@ -5,6 +5,7 @@ import { validatePassword } from "../../validations/validate-password";
 import styles from "./styles/login-signup.module.css";
 
 const ChangePassword = () => {
+  const [canResend, setCanResend] = useState(true);
   const [showPassword, setShowPassword] = useState(true);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [password, setPassword] = useState("New Password");
@@ -40,16 +41,18 @@ const ChangePassword = () => {
     if (!ref.current) {
       return;
     }
-    const newValue = ref.current.value;
+    const newValue = ref.current.value.trim();
     if (validation && !validation(newValue)[0] && newValue.length > 1) {
       return;
     }
-    setPasswordsMatch(() => {
-      if (newValue === password || newValue === confirmPassword) {
-        return true;
-      }
-      return false;
-    });
+    if (ref !== verificationCodeRef) {
+      setPasswordsMatch(() => {
+        if (newValue === password || newValue === confirmPassword) {
+          return true;
+        }
+        return false;
+      });
+    }
     setState(newValue);
   };
 
@@ -57,10 +60,30 @@ const ChangePassword = () => {
     setChangingPassword((prevChanging) => !prevChanging);
   };
 
+  const createVerification = () => {
+    setCanResend(false);
+    setTimeout(() => {
+      setCanResend(true);
+    }, 15000); //must wait 30 seconds before they can resend code. (or just refresh browser lol)
+    if (canResend) {
+      userCTX.actions.createPasswordCode();
+    }
+  };
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(userCTX.auth);
-    // userCTX.actions.changePassword();
+
+    //if either password fails validation then return
+    if (
+      !validatePassword(password)[0] ||
+      !validatePassword(confirmPassword)[0]
+    ) {
+      return;
+    }
+
+    userCTX.actions.changePassword(password, verificationCode, () => {
+      toggleChangingPassword();
+    });
   };
 
   const passwordInputStyle: CSSProperties = {
@@ -83,6 +106,9 @@ const ChangePassword = () => {
           onSubmit={onSubmit}
         >
           <h3 className={styles.heading}>Change Password</h3>
+          <p className={styles.sub} style={{ color: "red" }}>
+            {passwordsMatch ? "" : "Passwords Do Not Match"}
+          </p>
           <button
             className={styles.showPass}
             type="button"
@@ -94,9 +120,6 @@ const ChangePassword = () => {
           >
             {showPassword ? "Hide Password" : "Show Password"}
           </button>
-          <p className={styles.sub} style={{ color: "red" }}>
-            {passwordsMatch ? "" : "Passwords Do Not Match"}
-          </p>
           <label htmlFor="newpass" className={styles.label}>
             New Password
           </label>
@@ -149,8 +172,30 @@ const ChangePassword = () => {
             onChange={() => {
               onChanger(verificationCodeRef, setVerificationCode);
             }}
-            style={{ marginBottom: "40px" }}
           />
+          <p
+            style={{
+              margin: "0",
+              marginBottom: "40px",
+            }}
+          >
+            {"Can't find the email?"}
+            <button
+              className="circleButton"
+              onClick={createVerification}
+              style={{
+                backgroundColor: canResend ? "inherit" : "var(--subtle-gray)",
+                borderColor: canResend ? "var(--brand-1)" : "var(--gray-1)",
+                fontSize: "0.8rem",
+                padding: "6px",
+                marginLeft: "5px",
+              }}
+              disabled={!canResend}
+              type="button"
+            >
+              {canResend ? "Resend Email" : "Sending..."}
+            </button>
+          </p>
           <button
             type="submit"
             className="actionButton"
@@ -170,7 +215,10 @@ const ChangePassword = () => {
       ) : (
         <button
           className="actionButton"
-          onClick={toggleChangingPassword}
+          onClick={() => {
+            toggleChangingPassword();
+            createVerification();
+          }}
           style={{ marginBottom: "20px" }}
         >
           Change Password

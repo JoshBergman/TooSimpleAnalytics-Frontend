@@ -10,6 +10,8 @@ import { login } from "./api/login";
 import { deleteAccount } from "./api/delete-account";
 import { deleteProject } from "./api/delete-project";
 import { createVerification } from "./api/create-verification";
+import { callChangePassword } from "./api/change-password";
+import { callPasswordVerification } from "./api/create-password-code";
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -86,6 +88,25 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
     deleteProject(auth, projectName, addNotification, refreshProjects);
   };
 
+  const createPasswordCode = () => {
+    callPasswordVerification(auth, addNotification);
+  };
+
+  const changePassword = (
+    newPass: string,
+    verification: string,
+    onReqFinish: (success: boolean) => void
+  ) => {
+    callChangePassword(
+      auth,
+      setAuth,
+      addNotification,
+      onReqFinish,
+      newPass,
+      verification
+    );
+  };
+
   const finalUserData: IUser = {
     ...userDefault,
     projects,
@@ -99,6 +120,8 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       delAccount,
       delProject,
       sendVerification,
+      createPasswordCode,
+      changePassword,
     },
   };
 
