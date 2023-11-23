@@ -82,3 +82,9 @@
 .altButton:hover {
   cursor: pointer;
 }
+
+.sub {
+  color: var(--subtle-text);
+  font-style: italic;
+  margin: 0;
+}

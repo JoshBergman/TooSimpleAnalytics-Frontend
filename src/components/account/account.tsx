@@ -3,6 +3,7 @@ import { UserContext } from "../../store/user/user-context";
 
 import loginStyles from "./styles/login-signup.module.css";
 import styles from "./styles/account.module.css";
+import ChangePassword from "./change-password";
 
 const Account = () => {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
@@ -33,6 +34,7 @@ const Account = () => {
       >
         Log Out
       </button>
+      <ChangePassword />
       {isDeletingAccount ? (
         <div className={styles.delAccDiv}>
           <button className={styles.halfButton} onClick={deleteAccountHandler}>
