@@ -23,6 +23,7 @@ import styles from "./styles/project-thumbnail.module.css";
 import { IUser } from "../../../interfaces/user";
 import { getDatesArray } from "./last-week";
 import { Link } from "react-router-dom";
+import { getInfoFromDate } from "../single-project/date-data-helpers/get-info-from-date";
 
 interface IProjectThumbnailProps {
   projectName: string;
@@ -53,20 +54,9 @@ const ProjectThumbnail = ({
     },
   };
 
-  const getInfoFromDate = (date: string): number => {
-    const dates = date.split("/");
-    if (
-      viewDates &&
-      viewDates[dates[0]] &&
-      viewDates[dates[0]][dates[1]] &&
-      viewDates[dates[0]][dates[1]][dates[2]]
-    ) {
-      return viewDates[dates[0]][dates[1]][dates[2]];
-    }
-    return 0;
-  };
-
-  const viewData = lastWeekDates.map((date) => getInfoFromDate(date));
+  const viewData = lastWeekDates.map((date) =>
+    getInfoFromDate(date, viewDates)
+  );
   const labels = lastWeekDates.map((date) => date.slice(5));
   const data = {
     labels,

@@ -11,7 +11,12 @@ export const getInfoFromDate = (
     viewDates[dates[0]][dates[1]] &&
     viewDates[dates[0]][dates[1]][dates[2]]
   ) {
-    return viewDates[dates[0]][dates[1]][dates[2]];
+    const x = viewDates[dates[0]][dates[1]][dates[2]];
+    if (typeof x === "number") {
+      return x;
+    } else if (typeof x === "object") {
+      return typeof x.views === "number" ? x.views : 0;
+    }
   }
   return 0;
 };
