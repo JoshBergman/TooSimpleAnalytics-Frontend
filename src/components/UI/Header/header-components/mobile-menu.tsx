@@ -33,6 +33,13 @@ const MobileMenu = ({ toggleShowingMenu, has_jwt }: IMobileMenuProps) => {
                 <h2 className={styles.heading}>Too Simple Analytics</h2>
               </div>
               <DarkButton style={{ fontSize: "0.8em", marginTop: "10px" }} />
+              <Link
+                onClick={linkClickHandler}
+                to="/"
+                className={styles.navLink}
+              >
+                Home
+              </Link>
               {has_jwt && (
                 <Link
                   onClick={linkClickHandler}

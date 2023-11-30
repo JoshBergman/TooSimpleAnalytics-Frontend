@@ -3,6 +3,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 import MobileMenu from "./mobile-menu";
 import styles from "../styles/mobile-header.module.css";
+import { Link } from "react-router-dom";
 
 interface IMobileHeaderProps {
   has_jwt: boolean;
@@ -17,9 +18,9 @@ const MobileHeader = ({ has_jwt }: IMobileHeaderProps) => {
 
   return (
     <>
-      <a href="/">
+      <Link to="/projects">
         <img className={styles.img} alt="logo" src="/logo192.png" />
-      </a>
+      </Link>
       <button className={styles.hamburger} onClick={toggleShowingMenu}>
         <GiHamburgerMenu className={styles.hamburgerIcon} />
       </button>
