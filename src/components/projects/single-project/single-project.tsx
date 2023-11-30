@@ -1,5 +1,5 @@
 import { IUser } from "../../../interfaces/user";
-import ProjectGraph from "./project-graph";
+import ProjectGraph from "./single-project-components/project-graph";
 
 import styles from "./styles/single-project.module.css";
 

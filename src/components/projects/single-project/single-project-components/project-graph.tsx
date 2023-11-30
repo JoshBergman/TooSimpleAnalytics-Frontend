@@ -8,10 +8,10 @@ import {
   Filler,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { IUser } from "../../../interfaces/user";
-import { last_x_days } from "./date-data-helpers/x-days";
+import { IUser } from "../../../../interfaces/user";
+import { last_x_days } from "../date-data-helpers/x-days";
 
-import styles from "./styles/project-graph.module.css";
+import styles from "../styles/project-graph.module.css";
 
 ChartJS.register(
   CategoryScale,

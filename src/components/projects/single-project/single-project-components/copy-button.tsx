@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiOutlineCheck } from "react-icons/ai";
 import { GoCopy } from "react-icons/go";
 
-import styles from "./styles/copy-button.module.css";
+import styles from "../styles/copy-button.module.css";
 
 interface ICopyButtonProps {
   copyContents: string;

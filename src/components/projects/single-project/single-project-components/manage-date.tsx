@@ -1,6 +1,6 @@
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-import styles from "./styles/manage-date.module.css";
+import styles from "../styles/manage-date.module.css";
 
 interface IManageDateProps {
   daysShowingPointer: number;

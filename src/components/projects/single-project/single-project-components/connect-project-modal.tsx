@@ -1,5 +1,5 @@
 import ConnectProjectMethods from "./connect-project-methods";
-import styles from "./styles/connect-project-modal.module.css";
+import styles from "../styles/connect-project-modal.module.css";
 
 interface IConnectProjectModalProps {
   toggleShowing: () => void;

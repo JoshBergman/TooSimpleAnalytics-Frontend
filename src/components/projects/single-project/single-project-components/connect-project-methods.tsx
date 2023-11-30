@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 
-import styles from "./styles/connect-project-method.module.css";
-import { get_connect_methods, staticInfo } from "../../../store/static-info";
-import { UserContext } from "../../../store/user/user-context";
+import { get_connect_methods, staticInfo } from "../../../../store/static-info";
+import { UserContext } from "../../../../store/user/user-context";
 import CopyButton from "./copy-button";
+import styles from "../styles/connect-project-method.module.css";
 
 interface IConnectProjectMethodsProps {
   projName: string;
