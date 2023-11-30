@@ -1,0 +1,5 @@
+.container {
+  margin-top: 10px;
+  border-top: 2px solid var(--subtle-gray);
+  max-height: 80vh;
+}

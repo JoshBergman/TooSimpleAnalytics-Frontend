@@ -1,5 +1,6 @@
 import { IUser } from "../../../interfaces/user";
 import ProjectGraph from "./single-project-components/project-graph";
+import SortData from "./single-project-components/sort/sort-data";
 
 import styles from "./styles/single-project.module.css";
 
@@ -24,6 +25,7 @@ const SingleProject = ({
         days={days}
         year={year}
       />
+      <SortData />
     </div>
   );
 };
