@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { IUser } from "../../../interfaces/user";
 import ProjectGraph from "./single-project-components/project-graph";
 import SortData from "./single-project-components/sort/sort-data";
@@ -17,15 +19,17 @@ const SingleProject = ({
   days,
   year,
 }: ISingleProjectProps) => {
+  const [sortedInfo, setSortedInfo] = useState(projectInfo);
+
   return (
     <div className={styles.graphContainer}>
       <ProjectGraph
         projectName={projectName}
-        projectInfo={projectInfo}
+        projectInfo={sortedInfo}
         days={days}
         year={year}
       />
-      <SortData />
+      <SortData rawInfo={projectInfo} setSortedInfo={setSortedInfo} />
     </div>
   );
 };
