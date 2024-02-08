@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -11,18 +12,18 @@ interface IConfigEntry {
   [dataName: string]: boolean;
 }
 
-interface ISortTallies {
-  agent?: {
-    browser?: IDataEntry;
-    device?: IDataEntry;
+export interface ISortTallies {
+  agent: {
+    browser: IDataEntry;
+    device: IDataEntry;
   };
-  locations?: {
+  locations: {
     US: IDataEntry;
     [countryCode: string]: IDataEntry | number;
   };
 }
 
-interface ISortConfig {
+export interface ISortConfig {
   agent?: {
     browser?: IConfigEntry;
     device?: IConfigEntry;
@@ -33,10 +34,29 @@ interface ISortConfig {
   };
 }
 
-interface ISortConfigAndSortTallies {
+export interface ISortConfigAndSortTallies {
   totals: ISortTallies;
   config: ISortConfig;
 }
+
+//messy solution to safeguard objects for the time being, will redo this monster soon
+const typechecker = (objToCheck: object) => {
+  // required: agent => browser, device
+  // required: locations => US
+  const checkProp = (
+    obj: { [property: string]: any },
+    properties: string[]
+  ) => {
+    properties.forEach((property) => {
+      if (!obj.hasOwnProperty(property)) {
+        obj[property] = {};
+      }
+    });
+    return obj[properties[0]] as object;
+  };
+  checkProp(checkProp(objToCheck, ["agent"]), ["browser", "device"]);
+  checkProp(checkProp(objToCheck, ["locations"]), ["US"]);
+};
 
 export const parseViewDates = (viewDatesObj: any) => {
   //returns two objects: totals (tallies) and config (true/false values for user sorting)
@@ -105,11 +125,18 @@ export const parseViewDates = (viewDatesObj: any) => {
 
   const tals = parseViewDatesToTallies(viewDatesObj);
   const conf = generateConfigBasedOffTallies(tallies, true);
+
+  //type-check to ensure tals and config have required props
+  typechecker(tals);
+  typechecker(conf);
   return { totals: tals, config: conf } as ISortConfigAndSortTallies;
 };
 
 export const getDefaultSortConfig = () => {
   const tals = {};
   const conf = {};
+  typechecker(tals);
+  typechecker(conf);
+
   return { totals: tals, config: conf } as ISortConfigAndSortTallies;
 };

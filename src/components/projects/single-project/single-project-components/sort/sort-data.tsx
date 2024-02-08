@@ -22,8 +22,11 @@ const SortData = ({ setSortedInfo, rawInfo }: ISortDataProps) => {
   console.log(sortConfig);
   return (
     <div className={styles.container}>
-      <SortSelectMenu /> |
-      <SortSelectMenu />
+      <button onClick={() => console.log(sortConfig.config)}>
+        Print config
+      </button>
+      <SortSelectMenu config_and_totals={sortConfig} /> |
+      <SortSelectMenu config_and_totals={sortConfig} />
     </div>
   );
 };
