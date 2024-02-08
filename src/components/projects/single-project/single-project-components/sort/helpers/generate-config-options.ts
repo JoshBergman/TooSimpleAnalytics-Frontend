@@ -107,3 +107,9 @@ export const parseViewDates = (viewDatesObj: any) => {
   const conf = generateConfigBasedOffTallies(tallies, true);
   return { totals: tals, config: conf } as ISortConfigAndSortTallies;
 };
+
+export const getDefaultSortConfig = () => {
+  const tals = {};
+  const conf = {};
+  return { totals: tals, config: conf } as ISortConfigAndSortTallies;
+};

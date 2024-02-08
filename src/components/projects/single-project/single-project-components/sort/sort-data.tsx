@@ -2,7 +2,10 @@ import { useState } from "react";
 import { IUser, project } from "../../../../../interfaces/user";
 import styles from "./styles/sort-data.module.css";
 import SortSelectMenu from "./sort-select-menu";
-import { parseViewDates } from "./helpers/generate-config-options";
+import {
+  getDefaultSortConfig,
+  parseViewDates,
+} from "./helpers/generate-config-options";
 
 interface ISortDataProps {
   setSortedInfo: React.Dispatch<React.SetStateAction<project>>;
@@ -12,7 +15,9 @@ interface ISortDataProps {
 const SortData = ({ setSortedInfo, rawInfo }: ISortDataProps) => {
   console.log(rawInfo);
   const [sortConfig, setSortConfig] = useState(
-    parseViewDates(rawInfo.viewDates)
+    rawInfo.viewDates
+      ? parseViewDates(rawInfo.viewDates)
+      : getDefaultSortConfig()
   );
   console.log(sortConfig);
   return (
