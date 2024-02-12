@@ -24,11 +24,11 @@ export interface ISortTallies {
 }
 
 export interface ISortConfig {
-  agent?: {
-    browser?: IConfigEntry;
-    device?: IConfigEntry;
+  agent: {
+    browser: IConfigEntry;
+    device: IConfigEntry;
   };
-  locations?: {
+  locations: {
     US: IConfigEntry;
     [countryCode: string]: IConfigEntry | boolean;
   };

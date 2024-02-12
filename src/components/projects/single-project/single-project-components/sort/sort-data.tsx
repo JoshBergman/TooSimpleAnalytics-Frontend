@@ -13,20 +13,18 @@ interface ISortDataProps {
 }
 
 const SortData = ({ setSortedInfo, rawInfo }: ISortDataProps) => {
-  console.log(rawInfo);
   const [sortConfig, setSortConfig] = useState(
     rawInfo.viewDates
       ? parseViewDates(rawInfo.viewDates)
       : getDefaultSortConfig()
   );
-  console.log(sortConfig);
+
   return (
     <div className={styles.container}>
       <button onClick={() => console.log(sortConfig.config)}>
         Print config
       </button>
-      <SortSelectMenu config_and_totals={sortConfig} /> |
-      <SortSelectMenu config_and_totals={sortConfig} />
+      <SortSelectMenu sortConfig={sortConfig} path={["agent", "browser"]} />
     </div>
   );
 };
