@@ -3,16 +3,20 @@ import SortItem from "./sort-item";
 
 interface ISortSelectMenuProps {
   sortConfig: ISortConfigAndSortTallies;
+  setConfig: React.Dispatch<React.SetStateAction<ISortConfigAndSortTallies>>;
   path: string[];
 }
 
-const SortSelectMenu = ({ sortConfig, path }: ISortSelectMenuProps) => {
+const SortSelectMenu = ({
+  sortConfig,
+  setConfig,
+  path,
+}: ISortSelectMenuProps) => {
+  const pathLvl = (
+    currObj: { [index: string]: number | object },
+    property: string
+  ) => currObj[property];
   const getConfigPaths = (obj: { [index: string]: number | object }) => {
-    const pathLvl = (
-      currObj: { [index: string]: number | object },
-      property: string
-    ) => currObj[property];
-
     let curr = { ...obj };
     path.forEach((property) => {
       curr = pathLvl(curr, property);
@@ -23,8 +27,20 @@ const SortSelectMenu = ({ sortConfig, path }: ISortSelectMenuProps) => {
   const config = getConfigPaths(sortConfig.config);
   const totals = getConfigPaths(sortConfig.totals);
   const configs = Object.keys(config);
-  console.log(config);
-  console.log(totals);
+
+  const updateConfig = (property: string) => {
+    setConfig((existingConfig) => {
+      const path = getConfigPaths(existingConfig.config);
+      const prop = path[property];
+      path[property] = !prop;
+      return existingConfig;
+      // const currPathConfig = getConfigPaths(existingConfig.config);
+      // console.log(currPathConfig[property]);
+      return existingConfig;
+    });
+  };
+
+  updateConfig("Safari");
 
   return (
     <div>
@@ -33,11 +49,12 @@ const SortSelectMenu = ({ sortConfig, path }: ISortSelectMenuProps) => {
           <SortItem
             key={configOption}
             title={configOption}
+            enabledValue={configs[configOption]}
             totalsValue={totals[configOption] as number}
+            updateConfig={updateConfig}
           />
         );
       })}
-      {/* rendering of all menu items on config as selectItems */}
     </div>
   );
 };

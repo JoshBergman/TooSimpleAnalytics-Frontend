@@ -19,12 +19,18 @@ const SortData = ({ setSortedInfo, rawInfo }: ISortDataProps) => {
       : getDefaultSortConfig()
   );
 
+  //todo: sortConfig => setSortedInfo
+
   return (
     <div className={styles.container}>
       <button onClick={() => console.log(sortConfig.config)}>
         Print config
       </button>
-      <SortSelectMenu sortConfig={sortConfig} path={["agent", "browser"]} />
+      <SortSelectMenu
+        setConfig={setSortConfig}
+        sortConfig={sortConfig}
+        path={["agent", "browser"]}
+      />
     </div>
   );
 };
