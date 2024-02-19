@@ -5,6 +5,12 @@ import ProjectGraph from "./single-project-components/project-graph";
 import SortData from "./single-project-components/sort/sort-data";
 
 import styles from "./styles/single-project.module.css";
+import { get_filtered_viewDates_from_config } from "./single-project-components/sort/helpers/project-info-from-config";
+import {
+  ISortConfigAndSortTallies,
+  getDefaultSortConfig,
+  parseViewDates,
+} from "./single-project-components/sort/helpers/generate-config-options";
 
 interface ISingleProjectProps {
   projectName: string;
@@ -19,7 +25,23 @@ const SingleProject = ({
   days,
   year,
 }: ISingleProjectProps) => {
-  const [sortedInfo, setSortedInfo] = useState(projectInfo);
+  const [sortConfig, setSortConfig] = useState(
+    projectInfo.viewDates
+      ? parseViewDates(projectInfo.viewDates)
+      : getDefaultSortConfig()
+  );
+
+  const setConf = (newConf: ISortConfigAndSortTallies) => {
+    setSortConfig(newConf);
+    console.log("R");
+  };
+
+  const sortedInfo = get_filtered_viewDates_from_config(
+    projectInfo,
+    sortConfig.config
+  );
+  console.log(sortedInfo);
+  console.log("E");
 
   return (
     <div className={styles.graphContainer}>
@@ -29,7 +51,18 @@ const SingleProject = ({
         days={days}
         year={year}
       />
-      <SortData rawInfo={projectInfo} setSortedInfo={setSortedInfo} />
+      <SortData
+        rawInfo={projectInfo}
+        setConfig={setConf}
+        sortConfig={sortConfig}
+      />
+      <button
+        onClick={() => {
+          console.log(sortConfig);
+        }}
+      >
+        print confurg
+      </button>
     </div>
   );
 };

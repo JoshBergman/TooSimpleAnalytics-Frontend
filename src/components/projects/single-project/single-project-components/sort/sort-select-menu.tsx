@@ -3,7 +3,8 @@ import SortItem from "./sort-item";
 
 interface ISortSelectMenuProps {
   sortConfig: ISortConfigAndSortTallies;
-  setConfig: React.Dispatch<React.SetStateAction<ISortConfigAndSortTallies>>;
+  // setConfig: (newConfig: ISortConfigAndSortTallies) => void;
+  setConfig: (newConf: ISortConfigAndSortTallies) => void;
   path: string[];
 }
 
@@ -29,18 +30,14 @@ const SortSelectMenu = ({
   const configs = Object.keys(config);
 
   const updateConfig = (property: string) => {
-    setConfig((existingConfig) => {
-      const path = getConfigPaths(existingConfig.config);
-      const prop = path[property];
-      path[property] = !prop;
-      return existingConfig;
-      // const currPathConfig = getConfigPaths(existingConfig.config);
-      // console.log(currPathConfig[property]);
-      return existingConfig;
-    });
-  };
+    const existingConfig: ISortConfigAndSortTallies = { ...sortConfig };
+    const configsPath = getConfigPaths(existingConfig.config);
+    const currPropertyVal = configsPath[property];
+    configsPath[property] = !currPropertyVal;
 
-  updateConfig("Safari");
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    setConfig(existingConfig);
+  };
 
   return (
     <div>
