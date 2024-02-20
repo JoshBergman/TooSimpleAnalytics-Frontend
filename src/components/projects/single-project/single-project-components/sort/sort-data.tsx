@@ -10,11 +10,6 @@ interface ISortDataProps {
 const SortData = ({ setConfig, sortConfig }: ISortDataProps) => {
   return (
     <div className={styles.container}>
-      <button
-        onClick={() => console.log("Current config: ", sortConfig.config)}
-      >
-        Print config
-      </button>
       <SortSelectMenu
         setConfig={setConfig}
         sortConfig={sortConfig}

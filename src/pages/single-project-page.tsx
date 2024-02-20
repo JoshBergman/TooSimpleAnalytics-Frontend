@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { UserContext } from "../store/user/user-context";
@@ -28,6 +28,19 @@ const SingleProjectPage = () => {
         : projectName;
     navigate(`/projects/${newProjName}`);
   };
+
+  //moves user to relevant project page upon refresh/initial laod-in
+  useEffect(() => {
+    setTimeout(() => {
+      if (currProjRef.current) {
+        if (typeof projectName === "string") {
+          currProjRef.current.value = projectName;
+        }
+      }
+    }, 500);
+    navigate(`/projects/${projectName}`);
+    console.log("Effect Running");
+  }, [navigate, projectName]);
 
   //date managing
   let existingYears: string[] = [];

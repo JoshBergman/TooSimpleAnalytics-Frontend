@@ -27,7 +27,7 @@ const SortSelectMenu = ({
   };
   const config = getConfigPaths(sortConfig.config);
   const totals = getConfigPaths(sortConfig.totals);
-  const configs = Object.keys(config);
+  const configs = Object.keys(config); //ex: ["Chromium, "Other", "Safari"]
 
   const updateConfig = (property: string) => {
     const existingConfig: ISortConfigAndSortTallies = { ...sortConfig };
@@ -46,7 +46,7 @@ const SortSelectMenu = ({
           <SortItem
             key={configOption}
             title={configOption}
-            enabledValue={configs[configOption]}
+            enabledValue={config[configOption] as boolean}
             totalsValue={totals[configOption] as number}
             updateConfig={updateConfig}
           />

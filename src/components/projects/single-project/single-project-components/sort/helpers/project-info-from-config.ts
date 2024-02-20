@@ -11,16 +11,22 @@ export const get_filtered_viewDates_from_config = (
   viewDatesObj: { [property: string]: any },
   config: { [property: string]: any }
 ) => {
-  console.log(config);
+  const obj = viewDatesObj; //viewDatesObj is now cloned a level above and passing by reference is valid here. Cannot be copied with builtin methods (that bug took forever to solve)
+  if (
+    !(
+      config &&
+      Object.keys(config).length > 0 &&
+      viewDatesObj &&
+      Object.keys(viewDatesObj).length > 0
+    )
+  ) {
+    return viewDatesObj;
+  }
 
-  const obj = Object.assign({}, viewDatesObj);
-  console.log("before mods: ", obj);
   //these functions mutate appropiate changes onto obj
   filter_viewDates_from_config(obj.viewDates); //Changes the data to represent config rules
-  console.log("After first filter: ", obj);
   calculate_filtered_view_totals(obj); //adds up the new data that now represents config rules and updates the daily and total view counts
 
-  console.log("after calculation: ", obj, viewDatesObj);
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return obj as project;
 
@@ -48,6 +54,9 @@ export const get_filtered_viewDates_from_config = (
       });
     };
 
+    if (obj == null) {
+      return;
+    }
     const keys = Object.keys(obj);
     keys.forEach((key) => {
       if (Number.isInteger(parseInt(key))) {

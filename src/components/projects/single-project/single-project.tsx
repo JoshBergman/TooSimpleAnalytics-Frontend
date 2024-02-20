@@ -1,17 +1,17 @@
-import { useState } from "react";
-
-import { IUser } from "../../../interfaces/user";
-import ProjectGraph from "./single-project-components/project-graph";
-import SortData from "./single-project-components/sort/sort-data";
+import { useState, useEffect } from "react";
 
 import styles from "./styles/single-project.module.css";
+import { IUser } from "../../../interfaces/user";
 import { get_filtered_viewDates_from_config } from "./single-project-components/sort/helpers/project-info-from-config";
+import { cloneObject } from "./single-project-components/sort/helpers/clone-object";
 import {
   ISortConfigAndSortTallies,
   getDefaultSortConfig,
   parseViewDates,
 } from "./single-project-components/sort/helpers/generate-config-options";
-import { cloneObject } from "./single-project-components/sort/helpers/clone-object";
+
+import ProjectGraph from "./single-project-components/project-graph";
+import SortData from "./single-project-components/sort/sort-data";
 
 interface ISingleProjectProps {
   projectName: string;
@@ -32,9 +32,14 @@ const SingleProject = ({
       : getDefaultSortConfig()
   );
 
+  useEffect(() => {
+    setSortConfig(parseViewDates(projectInfo.viewDates));
+    //Empty config from initial load-in/refresh on single projects page means that refreshing the page never renders the parseViewDates fn >
+    // >that is needed to get sortedInfo and therefore render the graph. To fix: set config to parseViewDates on data retrieval.
+  }, [projectInfo]);
+
   const setConf = (newConf: ISortConfigAndSortTallies) => {
     setSortConfig(newConf);
-    console.log("R");
   };
 
   const sortedInfo = get_filtered_viewDates_from_config(
@@ -42,39 +47,35 @@ const SingleProject = ({
     sortConfig.config
   );
 
-  //! URGENT BUG
-  //TODO: bug status: original is being mutated during original filter step despite using 3 different attempts to copy the obj. Perhaps I must make a manual object copy algorithm
-  console.log("E");
-
   return (
     <div className={styles.graphContainer}>
       <ProjectGraph
         projectName={projectName}
-        projectInfo={sortedInfo}
+        projectInfo={sortedInfo as IUser["projects"]["x"]}
         days={days}
         year={year}
       />
       <SortData setConfig={setConf} sortConfig={sortConfig} />
       <button
         onClick={() => {
-          console.log(sortConfig.config);
-        }}
-      >
-        print confurg
-      </button>
-      <button
-        onClick={() => {
           console.log(projectInfo);
         }}
       >
-        print raw info
+        Print Raw Data
       </button>
       <button
         onClick={() => {
           console.log(sortedInfo);
         }}
       >
-        print filtered info
+        Print Filtered Data
+      </button>
+      <button
+        onClick={() => {
+          console.log(sortConfig);
+        }}
+      >
+        Print Config
       </button>
     </div>
   );
