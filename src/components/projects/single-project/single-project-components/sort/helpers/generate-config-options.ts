@@ -123,7 +123,7 @@ export const parseViewDates = (viewDatesObj: any) => {
     return config;
   };
 
-  const tals = parseViewDatesToTallies(viewDatesObj);
+  const tals = parseViewDatesToTallies(Object.assign({}, viewDatesObj));
   const conf = generateConfigBasedOffTallies(tallies, true);
 
   //type-check to ensure tals and config have required props

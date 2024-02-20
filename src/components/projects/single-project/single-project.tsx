@@ -11,6 +11,7 @@ import {
   getDefaultSortConfig,
   parseViewDates,
 } from "./single-project-components/sort/helpers/generate-config-options";
+import { cloneObject } from "./single-project-components/sort/helpers/clone-object";
 
 interface ISingleProjectProps {
   projectName: string;
@@ -37,10 +38,12 @@ const SingleProject = ({
   };
 
   const sortedInfo = get_filtered_viewDates_from_config(
-    projectInfo,
+    cloneObject(projectInfo),
     sortConfig.config
   );
-  console.log(sortedInfo);
+
+  //! URGENT BUG
+  //TODO: bug status: original is being mutated during original filter step despite using 3 different attempts to copy the obj. Perhaps I must make a manual object copy algorithm
   console.log("E");
 
   return (
@@ -51,17 +54,27 @@ const SingleProject = ({
         days={days}
         year={year}
       />
-      <SortData
-        rawInfo={projectInfo}
-        setConfig={setConf}
-        sortConfig={sortConfig}
-      />
+      <SortData setConfig={setConf} sortConfig={sortConfig} />
       <button
         onClick={() => {
-          console.log(sortConfig);
+          console.log(sortConfig.config);
         }}
       >
         print confurg
+      </button>
+      <button
+        onClick={() => {
+          console.log(projectInfo);
+        }}
+      >
+        print raw info
+      </button>
+      <button
+        onClick={() => {
+          console.log(sortedInfo);
+        }}
+      >
+        print filtered info
       </button>
     </div>
   );

@@ -11,17 +11,19 @@ export const get_filtered_viewDates_from_config = (
   viewDatesObj: { [property: string]: any },
   config: { [property: string]: any }
 ) => {
-  const obj = { ...viewDatesObj }; //todo creates copy of viewdates object (Havent tested this it might not xD)
+  console.log(config);
+
+  const obj = Object.assign({}, viewDatesObj);
+  console.log("before mods: ", obj);
   //these functions mutate appropiate changes onto obj
   filter_viewDates_from_config(obj.viewDates); //Changes the data to represent config rules
+  console.log("After first filter: ", obj);
   calculate_filtered_view_totals(obj); //adds up the new data that now represents config rules and updates the daily and total view counts
 
-  //   console.log("New Data In Function: ");
-  //   console.log(obj);
-  //   console.log("Config In FN: ");
-  //   console.log(config);
+  console.log("after calculation: ", obj, viewDatesObj);
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return obj as project;
+
   function filter_viewDates_from_config(obj: { [property: string]: any }) {
     const filterDayData = (
       sourceObj: { [property: string]: any },
