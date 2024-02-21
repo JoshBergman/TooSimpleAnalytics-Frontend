@@ -15,6 +15,16 @@ const SortData = ({ setConfig, sortConfig }: ISortDataProps) => {
         sortConfig={sortConfig}
         path={["agent", "browser"]}
       />
+      <SortSelectMenu
+        setConfig={setConfig}
+        sortConfig={sortConfig}
+        path={["agent", "device"]}
+      />
+      <SortSelectMenu
+        setConfig={setConfig}
+        sortConfig={sortConfig}
+        path={["locations"]}
+      />
     </div>
   );
 };

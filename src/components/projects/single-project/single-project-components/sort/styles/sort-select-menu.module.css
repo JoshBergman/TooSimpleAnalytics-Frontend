@@ -1,0 +1,11 @@
+.selectMenuContainer {
+  border-left: 2px solid var(--subtle-gray);
+  margin: 8px;
+  width: 100%;
+  max-height: 20vh;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}

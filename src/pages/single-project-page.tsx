@@ -37,9 +37,8 @@ const SingleProjectPage = () => {
           currProjRef.current.value = projectName;
         }
       }
-    }, 500);
+    }, 650);
     navigate(`/projects/${projectName}`);
-    console.log("Effect Running");
   }, [navigate, projectName]);
 
   //date managing

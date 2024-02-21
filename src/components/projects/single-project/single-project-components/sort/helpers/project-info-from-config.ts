@@ -1,4 +1,4 @@
-import { project } from "../../../../../../interfaces/user";
+import {} from "../../../../../../interfaces/user";
 
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable no-prototype-builtins */
@@ -28,7 +28,7 @@ export const get_filtered_viewDates_from_config = (
   calculate_filtered_view_totals(obj); //adds up the new data that now represents config rules and updates the daily and total view counts
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  return obj as project;
+  return obj;
 
   function filter_viewDates_from_config(obj: { [property: string]: any }) {
     const filterDayData = (
@@ -109,7 +109,7 @@ export const get_filtered_viewDates_from_config = (
       return smallest;
     };
 
-    let total = 0;
+    // let total = 0;
     const viewDates = configged_view_dates.viewDates;
     for (const year in viewDates) {
       for (const month in viewDates[year]) {
@@ -118,14 +118,15 @@ export const get_filtered_viewDates_from_config = (
           if (dayData.views) {
             const dayTotal = getDayViews(dayData);
             viewDates[year][month][day].views = dayTotal;
-            total += dayData.views;
+            // total += dayData.views;
           } else {
             // dayData.views = 0;
           }
         }
       }
     }
-    configged_view_dates.totalViews = total; //! After the implementation of the queried view dates the totals will no longer be accurate for filtered data, as only
+    // configged_view_dates.totalViews = total;
+    //! After the implementation of the queried view dates the totals will no longer be accurate for filtered data, as only
     //! the queried data will be considered
   }
 };

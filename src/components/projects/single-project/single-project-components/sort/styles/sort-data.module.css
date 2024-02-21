@@ -1,5 +1,7 @@
 .container {
   margin-top: 10px;
   border-top: 2px solid var(--subtle-gray);
-  max-height: 80vh;
+  border-bottom: 2px solid var(--subtle-gray);
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -56,27 +56,6 @@ const SingleProject = ({
         year={year}
       />
       <SortData setConfig={setConf} sortConfig={sortConfig} />
-      <button
-        onClick={() => {
-          console.log(projectInfo);
-        }}
-      >
-        Print Raw Data
-      </button>
-      <button
-        onClick={() => {
-          console.log(sortedInfo);
-        }}
-      >
-        Print Filtered Data
-      </button>
-      <button
-        onClick={() => {
-          console.log(sortConfig);
-        }}
-      >
-        Print Config
-      </button>
     </div>
   );
 };
