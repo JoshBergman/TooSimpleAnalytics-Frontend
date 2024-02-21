@@ -1,7 +1,16 @@
 .container {
   margin-top: 10px;
-  border-top: 2px solid var(--subtle-gray);
-  border-bottom: 2px solid var(--subtle-gray);
+  border: 2px solid var(--subtle-gray);
+  border-radius: 2px;
   display: flex;
   justify-content: space-evenly;
+
+  overflow-y: scroll;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
 }

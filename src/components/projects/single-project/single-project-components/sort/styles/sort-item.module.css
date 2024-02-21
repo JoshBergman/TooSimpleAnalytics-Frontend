@@ -1,4 +1,6 @@
 .sortItemContainer {
   width: 50%;
+  min-width: fit-content;
   height: fit-content;
+  color: var(--subtle-text);
 }

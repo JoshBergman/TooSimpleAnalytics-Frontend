@@ -10,12 +10,14 @@ interface ISortSelectMenuProps {
   // setConfig: (newConfig: ISortConfigAndSortTallies) => void;
   setConfig: (newConf: ISortConfigAndSortTallies) => void;
   path: string[];
+  label: string;
 }
 
 const SortSelectMenu = ({
   sortConfig,
   setConfig,
   path,
+  label,
 }: ISortSelectMenuProps) => {
   const pathLvl = (currObj: IConfigOrTotalObj, property: string) =>
     currObj[property];
@@ -60,12 +62,12 @@ const SortSelectMenu = ({
     ) => {
       keysArray.map((configOption) => {
         if (configOption === "US") {
-          getItems(
-            Object.keys(source["US"]),
-            config["US"] as IConfigOrTotalObj,
-            totalsSource["US"] as IConfigOrTotalObj,
-            true
-          );
+          // getItems(
+          //   Object.keys(source["US"]),
+          //   config["US"] as IConfigOrTotalObj,
+          //   totalsSource["US"] as IConfigOrTotalObj,
+          //   true
+          // );
         } else {
           items.push(
             <SortItem
@@ -86,7 +88,10 @@ const SortSelectMenu = ({
 
   return (
     <div className={styles.selectMenuContainer}>
-      {renderObjectIntoItems(configs, config, totals)}
+      <label className={styles.categoryLabel}>{label}</label>
+      <div className={styles.itemsContainer}>
+        {renderObjectIntoItems(configs, config, totals)}
+      </div>
     </div>
   );
 };
