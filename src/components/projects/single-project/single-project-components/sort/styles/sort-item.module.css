@@ -3,4 +3,19 @@
   min-width: fit-content;
   height: fit-content;
   color: var(--subtle-text);
+
+  font-size: 1em;
+}
+
+.checkbox {
+  background-color: green;
+  width: 1em;
+  height: 1em;
+}
+
+@media (max-width: 1000px) {
+  .checkbox,
+  .sortItemContainer {
+    font-size: 1.15em;
+  }
 }

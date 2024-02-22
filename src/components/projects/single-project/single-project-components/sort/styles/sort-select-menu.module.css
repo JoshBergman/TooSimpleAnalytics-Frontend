@@ -27,5 +27,13 @@
   .selectMenuContainer {
     border: none;
     border-bottom: 2px solid var(--subtle-gray);
+    overflow-y: scroll;
+    width: 97%;
+    margin-bottom: 10px;
+  }
+
+  .itemsContainer {
+    flex-wrap: nowrap;
+    flex-direction: column;
   }
 }

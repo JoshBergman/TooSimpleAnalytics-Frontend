@@ -31,6 +31,7 @@ const SortItem = ({
         onChange={onChangeHandler}
         checked={enabledValue}
         type="checkbox"
+        className={styles.checkbox}
       />
       <label>
         {title + " "}
