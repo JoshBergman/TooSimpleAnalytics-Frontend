@@ -53,7 +53,13 @@ const SortSelectMenu = ({
     source: IConfigOrTotalObj,
     totalsSource: IConfigOrTotalObj
   ) => {
-    const items: React.ReactNode[] = [];
+    if (
+      keysArray.length === 0 ||
+      (keysArray.length === 1 && keysArray[0] === "US")
+    ) {
+      return <label>No Data Found</label>;
+    }
+    const items: [React.ReactNode, number][] = [];
     const getItems = (
       keysArray: string[],
       source: IConfigOrTotalObj,
@@ -69,7 +75,7 @@ const SortSelectMenu = ({
           //   true
           // );
         } else {
-          items.push(
+          items.push([
             <SortItem
               key={configOption + Math.random()}
               title={configOption}
@@ -77,13 +83,16 @@ const SortSelectMenu = ({
               totalsValue={totalsSource[configOption] as number}
               updateConfig={updateConfig}
               US={useUS ? true : false}
-            />
-          );
+            />,
+            totalsSource[configOption] as number,
+          ]);
         }
       });
     };
     getItems(keysArray, source, totalsSource);
-    return items;
+
+    items.sort((a, b) => b[1] - a[1]); //displays items largest => smallest
+    return items.map((item) => item[0]); //removes reference number used to sort before rendering
   };
 
   return (
