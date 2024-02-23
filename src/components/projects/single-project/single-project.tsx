@@ -55,13 +55,6 @@ const SingleProject = ({
         days={days}
         year={year}
       />
-      <button
-        onClick={() => {
-          console.log(projectInfo, sortedInfo);
-        }}
-      >
-        Pringt
-      </button>
       <SortData setConfig={setConf} sortConfig={sortConfig} />
     </div>
   );
