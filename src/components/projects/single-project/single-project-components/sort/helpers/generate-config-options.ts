@@ -62,41 +62,72 @@ export const parseViewDates = (viewDatesObj: any) => {
   //returns two objects: totals (tallies) and config (true/false values for user sorting)
 
   //parse viewDates Object into totals of the data, stored as "tallies"
-  const tallies = {};
-  const parseViewDatesToTallies = (obj: { [x: string]: any }) => {
-    const addObjects = (
-      targetObj: { [x: string]: any },
-      sourceObj: { [x: string]: any }
-    ) => {
-      const sourceKeys = Object.keys(sourceObj);
+  const tallies = parseViewDatesToTallies(viewDatesObj);
+  function parseViewDatesToTallies(source: any) {
+    const counted = {};
+    const nested = {};
+    countAll(source, counted); //counts all nested properties (makes totals)
+    nesty(source, nested); //creates object structure matching viewdates props
+    fillNesty(counted, nested); //applies the counted totals to the properly nested object
+    //Breaking the logic into these 3 functions is a life-saver of maintainability
 
-      sourceKeys.forEach((key) => {
-        if (typeof sourceObj[key] !== "object") {
-          if (targetObj[key]) {
-            targetObj[key] += sourceObj[key];
-          } else {
-            targetObj[key] = sourceObj[key];
-          }
-        } else {
-          if (!targetObj[key]) {
-            targetObj[key] = {};
-          }
-          addObjects(targetObj[key], sourceObj[key]);
+    return nested;
+
+    function fillNesty(
+      count: { [key: string]: number | object },
+      nes: { [key: string]: number | object }
+    ) {
+      for (const key in nes) {
+        if (typeof nes[key] === "object") {
+          fillNesty(count, nes[key] as { [key: string]: number | object });
         }
-      });
-    };
-
-    const keys = Object.keys(obj);
-    keys.forEach((key) => {
-      if (Number.isInteger(parseInt(key))) {
-        parseViewDatesToTallies(obj[key]);
-      } else {
-        addObjects(tallies, obj);
+        if (typeof nes[key] === "number") {
+          nes[key] = count[key];
+        }
       }
-    });
+    }
 
-    return tallies;
-  };
+    function nesty(
+      source: { [key: string]: number | object },
+      target: { [key: string]: number | object }
+    ) {
+      for (const key in source) {
+        if (Number.isInteger(parseInt(key))) {
+          nesty(source[key] as { [key: string]: number | object }, target);
+        } else {
+          if (typeof source[key] === "object") {
+            if (!target[key]) {
+              target[key] = {};
+            }
+            nesty(
+              source[key] as { [key: string]: number | object },
+              target[key] as { [key: string]: number | object }
+            );
+          }
+          if (typeof source[key] === "number") {
+            target[key] = 0;
+          }
+        }
+      }
+    }
+
+    function countAll(
+      source: { [key: string]: number | object },
+      target: { [key: string]: number | object }
+    ) {
+      for (const key in source) {
+        if (typeof source[key] === "object") {
+          countAll(source[key] as { [key: string]: number | object }, target);
+        } else {
+          if (!target[key]) {
+            target[key] = 0;
+          }
+          //@ts-expect-error throws error even after being type-checked. Dont have the time to type everything atm
+          target[key] += source[key];
+        }
+      }
+    }
+  }
 
   //convert the tallies (totals) into a configuration object used to keep track of what data points the user wants to show
   const generateConfigBasedOffTallies = (
