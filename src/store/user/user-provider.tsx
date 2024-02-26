@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 
 import { UserContext, userDefault } from "./user-context";
 import { IUser } from "../../interfaces/user";
-import { getProjects } from "./api/get-projects";
+// import { getProjects } from "./api/get-projects"; Likely going to deprecate
 import { AppStateContext } from "../app-state/app-state-context";
 import { createProject } from "./api/create-project";
 import { signup } from "./api/signup";
@@ -12,6 +12,8 @@ import { deleteProject } from "./api/delete-project";
 import { createVerification } from "./api/create-verification";
 import { callChangePassword } from "./api/change-password";
 import { callPasswordVerification } from "./api/create-password-code";
+import { getProjectsThumbnails } from "./api/get-project-thumbnails";
+import { getProjectInfoByDate } from "./api/get-proj-info-by-date";
 
 interface IProviderProps {
   children: React.ReactNode;
@@ -32,12 +34,27 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const addNotification = appCTX.appState.addNotification;
 
   useEffect(() => {
-    getProjects(auth, setProjects, setProjectsID, addNotification);
+    getProjectsThumbnails(auth, setProjects, setProjectsID, addNotification);
   }, [auth, addNotification]);
 
   //whenever projects are modified use refreshProjects to query projects.
   const refreshProjects = () => {
-    getProjects(auth, setProjects, setProjectsID, addNotification);
+    getProjectsThumbnails(auth, setProjects, setProjectsID, addNotification);
+  };
+
+  const getProjInfoByDate = (
+    projectName: string,
+    startDate: Date,
+    endDate: Date
+  ) => {
+    getProjectInfoByDate(
+      auth,
+      projectName,
+      startDate,
+      endDate,
+      setProjects,
+      addNotification
+    );
   };
 
   const addProject = (projectName: string) => {
@@ -122,6 +139,7 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
       sendVerification,
       createPasswordCode,
       changePassword,
+      getProjInfoByDate,
     },
   };
 

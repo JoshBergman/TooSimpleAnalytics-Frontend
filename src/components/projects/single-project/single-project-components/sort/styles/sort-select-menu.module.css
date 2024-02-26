@@ -21,6 +21,7 @@
 .categoryLabel {
   font-size: 1em;
   color: var(--text-default);
+  margin: 0;
 }
 
 @media (max-width: 1000px) {

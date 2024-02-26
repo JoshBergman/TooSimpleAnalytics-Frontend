@@ -57,7 +57,7 @@ const SortSelectMenu = ({
       keysArray.length === 0 ||
       (keysArray.length === 1 && keysArray[0] === "US")
     ) {
-      return <label>No Data Found</label>;
+      return <p>No Data Found</p>;
     }
     const items: [React.ReactNode, number][] = [];
     const getItems = (
@@ -97,7 +97,7 @@ const SortSelectMenu = ({
 
   return (
     <div className={styles.selectMenuContainer}>
-      <label className={styles.categoryLabel}>{label}</label>
+      <h4 className={styles.categoryLabel}>{label}</h4>
       <div className={styles.itemsContainer}>
         {renderObjectIntoItems(configs, config, totals)}
       </div>

@@ -8,6 +8,10 @@ interface IManageDateProps {
   setDaysShowingPointer: React.Dispatch<React.SetStateAction<number>>;
   setYearsPointer: React.Dispatch<React.SetStateAction<number>>;
   daysShowing: number[];
+  queryNewDateInfo: (
+    newYearsPointer: boolean | number,
+    newDaysPointer: boolean | number
+  ) => void;
   years: string[];
 }
 
@@ -17,6 +21,7 @@ const ManageDate = ({
   setDaysShowingPointer,
   setYearsPointer,
   daysShowing,
+  queryNewDateInfo,
   years,
 }: IManageDateProps) => {
   const setToCurrYear = () => {
@@ -26,29 +31,41 @@ const ManageDate = ({
   };
 
   const prevYear = () => {
-    setYearsPointer((prevYearPointer) =>
-      prevYearPointer - 1 >= 0 ? prevYearPointer - 1 : years.length - 1
-    );
+    setYearsPointer((prevYearPointer) => {
+      const newYearPointer =
+        prevYearPointer - 1 >= 0 ? prevYearPointer - 1 : years.length - 1;
+      queryNewDateInfo(newYearPointer, false);
+      return newYearPointer;
+    });
   };
 
   const nextYear = () => {
-    setYearsPointer((prevYearPointer) =>
-      prevYearPointer + 1 <= years.length - 1 ? prevYearPointer + 1 : 0
-    );
+    setYearsPointer((prevYearPointer) => {
+      const newYearPointer =
+        prevYearPointer + 1 <= years.length - 1 ? prevYearPointer + 1 : 0;
+      queryNewDateInfo(newYearPointer, false);
+      return newYearPointer;
+    });
   };
 
   const prevDaysShowing = () => {
     setToCurrYear();
-    setDaysShowingPointer((prevPointer) =>
-      prevPointer - 1 >= 0 ? prevPointer - 1 : daysShowing.length - 1
-    );
+    setDaysShowingPointer((prevPointer) => {
+      const newDaysPointer =
+        prevPointer - 1 >= 0 ? prevPointer - 1 : daysShowing.length - 1;
+      queryNewDateInfo(false, newDaysPointer);
+      return newDaysPointer;
+    });
   };
 
   const nextDaysShowing = () => {
     setToCurrYear();
-    setDaysShowingPointer((prevPointer) =>
-      prevPointer + 1 <= daysShowing.length - 1 ? prevPointer + 1 : 0
-    );
+    setDaysShowingPointer((prevPointer) => {
+      const newDaysPointer =
+        prevPointer + 1 <= daysShowing.length - 1 ? prevPointer + 1 : 0;
+      queryNewDateInfo(false, newDaysPointer);
+      return newDaysPointer;
+    });
   };
   return (
     <div className={styles.datesContainer}>

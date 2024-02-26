@@ -8,6 +8,7 @@ import ManageDate from "../components/projects/single-project/single-project-com
 import ConnectProjectModal from "../components/projects/single-project/single-project-components/connect-project-modal";
 import styles from "./styles/single-project-page.module.css";
 import DeleteProjectButton from "../components/projects/single-project/single-project-components/delete-project-button";
+import { getElapsedQueryDate } from "../components/projects/single-project/single-project-components/helpers/get-elapsed-query-dates";
 
 const SingleProjectPage = () => {
   const [daysShowingPointer, setDaysShowingPointer] = useState(0);
@@ -20,6 +21,31 @@ const SingleProjectPage = () => {
   const userCTX = useContext(UserContext).user;
   const projectNames = Object.keys(userCTX.projects);
   const { projectName } = useParams();
+
+  const queryNewDateInfo = (
+    newYearsPointer: boolean | number,
+    newDaysPointer: boolean | number
+  ) => {
+    const today = new Date();
+    const targetYear = parseInt(
+      years[
+        typeof newYearsPointer === "number" ? newYearsPointer : yearsPointer
+      ]
+    );
+    const startDate = getElapsedQueryDate(
+      today,
+      daysShowing[
+        typeof newDaysPointer === "number" ? newDaysPointer : daysShowingPointer
+      ],
+      targetYear
+    );
+    const endDate =
+      today.getFullYear() >= targetYear
+        ? today
+        : new Date(today).setFullYear(targetYear);
+
+    userCTX.actions.getProjInfoByDate(projectName, startDate, endDate);
+  };
 
   const projSelectChangeHandler = () => {
     const newProjName =
@@ -92,6 +118,7 @@ const SingleProjectPage = () => {
           setDaysShowingPointer={setDaysShowingPointer}
           setYearsPointer={setYearsPointer}
           daysShowing={daysShowing}
+          queryNewDateInfo={queryNewDateInfo}
           years={years}
         />
       </div>
