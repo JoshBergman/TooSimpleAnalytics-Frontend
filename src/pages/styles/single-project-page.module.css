@@ -17,7 +17,7 @@
   box-sizing: border-box;
   outline: none;
   transition: all 0.2s ease-in-out;
-  max-width: 150px;
+  max-width: 260px;
 }
 
 .option {
@@ -47,5 +47,8 @@
 @media (max-width: 800px) {
   .topInfoContainer {
     width: 90%;
+  }
+  .projSelect {
+    max-width: 150px;
   }
 }

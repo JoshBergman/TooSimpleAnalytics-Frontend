@@ -12,6 +12,7 @@ import {
 
 import ProjectGraph from "./single-project-components/project-graph";
 import SortData from "./single-project-components/sort/sort-data";
+import { sliceViewDates } from "./date-data-helpers/slice-viewdates";
 
 interface ISingleProjectProps {
   projectName: string;
@@ -28,15 +29,17 @@ const SingleProject = ({
 }: ISingleProjectProps) => {
   const [sortConfig, setSortConfig] = useState(
     projectInfo.viewDates
-      ? parseViewDates(projectInfo.viewDates)
+      ? parseViewDates(sliceViewDates(projectInfo.viewDates, days, year))
       : getDefaultSortConfig()
   );
 
   useEffect(() => {
-    setSortConfig(parseViewDates(projectInfo.viewDates));
+    setSortConfig(
+      parseViewDates(sliceViewDates(projectInfo.viewDates, days, year))
+    );
     //Empty config from initial load-in/refresh on single projects page means that refreshing the page never renders the parseViewDates fn >
     // >that is needed to get sortedInfo and therefore render the graph. To fix: set config to parseViewDates on data retrieval.
-  }, [projectInfo]);
+  }, [projectInfo, days, year]);
 
   const setConf = (newConf: ISortConfigAndSortTallies) => {
     setSortConfig(newConf);

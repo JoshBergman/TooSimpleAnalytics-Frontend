@@ -52,6 +52,8 @@ const SingleProjectPage = () => {
       currProjRef.current && currProjRef.current.value
         ? currProjRef.current.value
         : projectName;
+    setDaysShowingPointer(0);
+    setYearsPointer(0);
     navigate(`/projects/${newProjName}`);
   };
 
