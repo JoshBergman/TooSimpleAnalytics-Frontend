@@ -1,6 +1,5 @@
 .container {
   margin-top: 10px;
-  border: 2px solid var(--subtle-gray);
   border-radius: 2px;
   display: flex;
   justify-content: space-evenly;

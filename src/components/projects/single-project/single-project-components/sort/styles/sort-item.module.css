@@ -1,10 +1,25 @@
 .sortItemContainer {
-  width: 50%;
+  width: 90%;
+  border-radius: 5px;
   min-width: fit-content;
   height: fit-content;
-  color: var(--subtle-text);
+  margin: 5px 0;
+  transition: all 0.2s ease-in-out;
 
   font-size: 1em;
+}
+
+.sortItemContainer:hover {
+  cursor: pointer;
+  transition: all 0.03s ease-in-out;
+  box-shadow: inset 1.5px 1.5px var(--brand-hover),
+    1.5px 1.5px var(--brand-hover);
+}
+
+.label {
+  color: var(--text-default);
+  margin: 5px;
+  margin-left: 10px;
 }
 
 .checkbox {

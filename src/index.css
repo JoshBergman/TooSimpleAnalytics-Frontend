@@ -54,6 +54,7 @@ body {
   /* shared light and dark colors */
   /* --brand-1: rgb(77, 158, 208); Original brand color in the case I want to switch back */
   --brand-1: rgb(54, 125, 211);
+  --brand-1-opacity: rgba(54, 125, 211, 0.674);
   --brand-hover: rgb(71, 169, 231);
 
   --error: rgba(231, 131, 131, 0.928);

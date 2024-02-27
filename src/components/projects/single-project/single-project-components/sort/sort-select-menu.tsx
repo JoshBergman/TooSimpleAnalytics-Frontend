@@ -21,7 +21,8 @@ const SortSelectMenu = ({
 }: ISortSelectMenuProps) => {
   const pathLvl = (currObj: IConfigOrTotalObj, property: string) =>
     currObj[property];
-  const getConfigPaths = (obj: IConfigOrTotalObj, useUS?: boolean) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getConfigPaths = (obj: { [key: string]: any }, useUS?: boolean) => {
     let curr = { ...obj };
     path.forEach((property) => {
       curr = pathLvl(curr, property) as IConfigOrTotalObj;
@@ -34,6 +35,23 @@ const SortSelectMenu = ({
   const config = getConfigPaths(sortConfig.config);
   const totals = getConfigPaths(sortConfig.totals);
   const configs = Object.keys(config); //ex: ["Chromium, "Other", "Safari"]
+  const getCategoryTotal = () => {
+    let currTotal = 0;
+
+    const addTotals = (obj: { [key: string]: number | object }) => {
+      for (const key in obj) {
+        if (typeof obj[key] === "object") {
+          addTotals(obj[key] as { [key: string]: number | object });
+        } else {
+          currTotal += obj[key] as number;
+        }
+      }
+    };
+
+    addTotals(totals);
+    return currTotal;
+  };
+  const categoryTotal = getCategoryTotal();
 
   const updateConfig = (property: string, useUS?: boolean) => {
     const existingConfig: ISortConfigAndSortTallies = { ...sortConfig };
@@ -41,6 +59,7 @@ const SortSelectMenu = ({
       existingConfig.config,
       useUS ? true : false
     );
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const currPropertyVal = configsPath[property];
     configsPath[property] = !currPropertyVal;
 
@@ -81,6 +100,7 @@ const SortSelectMenu = ({
               title={configOption}
               enabledValue={!!source[configOption]}
               totalsValue={totalsSource[configOption] as number}
+              categoryTotal={categoryTotal}
               updateConfig={updateConfig}
               US={useUS ? true : false}
             />,

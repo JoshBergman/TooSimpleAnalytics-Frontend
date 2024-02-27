@@ -5,6 +5,7 @@ interface ISortItemProps {
   enabledValue: boolean;
   updateConfig: (property: string, useUS?: boolean) => void;
   totalsValue: number;
+  categoryTotal: number;
   US?: boolean;
 }
 
@@ -13,6 +14,7 @@ const SortItem = ({
   enabledValue,
   updateConfig,
   totalsValue,
+  categoryTotal,
   US,
 }: ISortItemProps) => {
   const onChangeHandler = () => {
@@ -25,19 +27,30 @@ const SortItem = ({
     }
   };
 
+  const getBackground = (color1: string, dull: boolean) => {
+    const color2 = dull
+      ? "rgba(152, 152, 152, 0.074)"
+      : "rgba(152, 152, 152, 0.274)";
+    const filledIn = Math.floor((totalsValue / categoryTotal) * 100);
+
+    return `linear-gradient(to right, ${color1} ${filledIn}%, ${color2} 0px)`;
+  };
+
   return (
-    <div className={styles.sortItemContainer}>
-      <input
-        onChange={onChangeHandler}
-        checked={enabledValue}
-        type="checkbox"
-        id={title + "checkbox"}
-        className={styles.checkbox}
-      />
-      <label htmlFor={title + "checkbox"}>
-        {title + " "}
+    <div
+      className={styles.sortItemContainer}
+      style={{
+        background: enabledValue
+          ? getBackground("var(--brand-1-opacity)", false)
+          : getBackground("rgba(152, 152, 152, 0.774)", true),
+      }}
+      onClick={onChangeHandler}
+      id={title + "box"}
+    >
+      <p className={styles.label}>
+        {title[0].toUpperCase() + title.slice(1) + " "}
         {totalsValue}
-      </label>
+      </p>
     </div>
   );
 };
