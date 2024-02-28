@@ -14,6 +14,7 @@ const SingleProjectPage = () => {
   const [daysShowingPointer, setDaysShowingPointer] = useState(0);
   const [yearsPointer, setYearsPointer] = useState(0);
   const [showingAddView, setShowingAddView] = useState(false);
+  const [enableDateBtn, setEnableDateBtn] = useState(true); //used to prevent user from spamming manage date btn
 
   const currProjRef = useRef<HTMLSelectElement>(null);
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ const SingleProjectPage = () => {
     newYearsPointer: boolean | number,
     newDaysPointer: boolean | number
   ) => {
+    setEnableDateBtn(false);
+    setTimeout(() => setEnableDateBtn(true), 2000);
     const today = new Date();
     const targetYear = parseInt(
       years[
@@ -122,6 +125,7 @@ const SingleProjectPage = () => {
           daysShowing={daysShowing}
           queryNewDateInfo={queryNewDateInfo}
           years={years}
+          enableDateBtn={enableDateBtn}
         />
       </div>
       {projectName && projectNames.includes(projectName) ? (

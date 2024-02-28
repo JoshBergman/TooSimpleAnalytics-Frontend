@@ -12,6 +12,7 @@ interface IManageDateProps {
     newYearsPointer: boolean | number,
     newDaysPointer: boolean | number
   ) => void;
+  enableDateBtn: boolean;
   years: string[];
 }
 
@@ -22,6 +23,7 @@ const ManageDate = ({
   setYearsPointer,
   daysShowing,
   queryNewDateInfo,
+  enableDateBtn,
   years,
 }: IManageDateProps) => {
   const setToCurrYear = () => {
@@ -67,24 +69,46 @@ const ManageDate = ({
       return newDaysPointer;
     });
   };
+
+  //todo Break date buttons into a component
   return (
     <div className={styles.datesContainer}>
       <div className={styles.daysContainer}>
-        <button className={styles.daysButton} onClick={prevDaysShowing}>
+        <button
+          className={styles.daysButton}
+          onClick={prevDaysShowing}
+          disabled={!enableDateBtn}
+          style={{ color: enableDateBtn ? "inherit" : "gray" }}
+        >
           {<IoIosArrowBack className={styles.arrowIcon} />}
         </button>
         <p className={styles.daysNum}>{daysShowing[daysShowingPointer]}d</p>
-        <button className={styles.daysButton} onClick={nextDaysShowing}>
+        <button
+          className={styles.daysButton}
+          onClick={nextDaysShowing}
+          disabled={!enableDateBtn}
+          style={{ color: enableDateBtn ? "inherit" : "gray" }}
+        >
           {<IoIosArrowForward className={styles.arrowIcon} />}
         </button>
       </div>
       {daysShowing[daysShowingPointer] === 365 && (
         <div className={styles.daysContainer}>
-          <button className={styles.daysButton} onClick={prevYear}>
+          <button
+            className={styles.daysButton}
+            onClick={prevYear}
+            disabled={!enableDateBtn}
+            style={{ color: enableDateBtn ? "inherit" : "gray" }}
+          >
             {<IoIosArrowBack className={styles.arrowIconSmall} />}
           </button>
           <p className={styles.yearsNum}>{years[yearsPointer]}</p>
-          <button className={styles.daysButton} onClick={nextYear}>
+          <button
+            className={styles.daysButton}
+            onClick={nextYear}
+            disabled={!enableDateBtn}
+            style={{ color: enableDateBtn ? "inherit" : "gray" }}
+          >
             {<IoIosArrowForward className={styles.arrowIconSmall} />}
           </button>
         </div>
