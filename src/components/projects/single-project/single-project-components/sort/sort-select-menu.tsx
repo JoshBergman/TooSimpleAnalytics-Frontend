@@ -41,7 +41,9 @@ const SortSelectMenu = ({
     const addTotals = (obj: { [key: string]: number | object }) => {
       for (const key in obj) {
         if (typeof obj[key] === "object") {
-          addTotals(obj[key] as { [key: string]: number | object });
+          if (path[0] !== "locations" && key !== "US") {
+            addTotals(obj[key] as { [key: string]: number | object });
+          }
         } else {
           currTotal += obj[key] as number;
         }
