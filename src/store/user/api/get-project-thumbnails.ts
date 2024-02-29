@@ -5,8 +5,7 @@ import { staticInfo } from "../../static-info";
 export const getProjectsThumbnails = (
   auth: string | null,
   setProjects: (newProjects: IUser["projects"]) => void,
-  setProjectsID: (newID: string) => void,
-  addNotification: (type: string, msg: string) => void
+  setProjectsID: (newID: string) => void
 ) => {
   if (!auth) {
     return;
@@ -28,9 +27,5 @@ export const getProjectsThumbnails = (
     })
     .catch((error) => {
       console.error(error);
-      addNotification(
-        "error",
-        "Error loading projects. Please try again in one minute."
-      );
     });
 };

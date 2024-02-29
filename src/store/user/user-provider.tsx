@@ -34,12 +34,11 @@ export const UserContextProvider = ({ children }: IProviderProps) => {
   const addNotification = appCTX.appState.addNotification;
 
   useEffect(() => {
-    getProjectsThumbnails(auth, setProjects, setProjectsID, addNotification);
-  }, [auth, addNotification]);
-
+    getProjectsThumbnails(auth, setProjects, setProjectsID);
+  }, [auth]);
   //whenever projects are modified use refreshProjects to query projects.
   const refreshProjects = () => {
-    getProjectsThumbnails(auth, setProjects, setProjectsID, addNotification);
+    getProjectsThumbnails(auth, setProjects, setProjectsID);
   };
 
   const getProjInfoByDate = (
