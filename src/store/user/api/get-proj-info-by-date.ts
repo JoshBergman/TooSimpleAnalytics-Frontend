@@ -31,6 +31,7 @@ export const getProjectInfoByDate = (
     .then((response) => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const { projects } = response.data;
+      // @ts-expect-error type glitch possibly, likely due to my wonderful respect for typing in this file. Fix later
       setProjects((existingProjInfo) => {
         //clone the project into the same object
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
