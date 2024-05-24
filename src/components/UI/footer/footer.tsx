@@ -47,7 +47,7 @@ const Footer = () => {
           </a>
         </nav>
       </div>
-      <p className={styles.copyright}>© 2023 Joshua Bergman</p>
+      <p className={styles.copyright}>© 2024 Joshua Bergman</p>
     </>
   );
 };
