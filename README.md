@@ -1,4 +1,4 @@
-# [Too Simple Analytics](https://toosimpleanalytics.com/)
+# (Deprecated) [Too Simple Analytics](https://toosimpleanalytics.com/)
 
 **By Joshua Bergman**
 
